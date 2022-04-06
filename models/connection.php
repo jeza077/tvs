@@ -2,15 +2,38 @@
 
 class Connection{
 
+	public static function infoDB(){
+
+		$infoDB = array(
+			'database' => 'tvs_prueba',
+			'user' => 'root',
+			'pass' => ''
+		);
+
+		return $infoDB;
+	}
+
 	public static function connect(){
 
-		$link = new PDO("mysql:host=localhost:3308;dbname=tvs_prueba",
-			            "root",
-			            "");
+		try{
 
-		$link->exec("set names utf8");
+			$link = new PDO(
+				"mysql:host=localhost:3308;dbname=".Connection::infoDB()['database'],
+				Connection::infoDB()['user'],
+				Connection::infoDB()['pass']
+			);
+	
+			$link->exec("set names utf8");
+	
+			return $link;
 
-		return $link;
+		} catch(Exception $e){
+
+			die('Error:'.$e->getMessage());
+
+		}
+
+
 
 	}
 
