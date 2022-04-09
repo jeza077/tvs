@@ -21,7 +21,7 @@
         
         public function ajaxLogin(){
 
-            $table = 'users';
+            $table = 'usuarios';
             $data = array(
                 'email' => $this->email,
                 'password' => $this->password
