@@ -24,32 +24,28 @@ $(function() {
         // Guardar el usuario en Localstorage
         const emailLocalStorage = localStorage.getItem('email'); 
         if( $('#rememberMe').prop('checked') && !emailLocalStorage ){
+
             localStorage.setItem('email',  data.email);
-            
             // console.log('Si check');
 
         } else if( $('#rememberMe').prop('checked') && emailLocalStorage !== '' && emailLocalStorage !== data.email ) {
-            // if( emailLocalStorage !== '' && emailLocalStorage !== data.email ) {
-                localStorage.removeItem('email');
-                localStorage.setItem('email',  data.email);
-            // }     
+    
+            localStorage.removeItem('email');
+            localStorage.setItem('email',  data.email);
 
-            // console.log('Si check', data.email);
-            // const emailLocalStorage = localStorage.setItem('email',  data.email);
         } else {
-            // if( !emailLocalStorage ) {
-                localStorage.removeItem('email');
-                localStorage.setItem('email',  data.email);
-            // }     
-            // console.log('No check');
+
+            localStorage.removeItem('email');
+            localStorage.setItem('email',  data.email);
+
         }
         
 
         $.post('ajax/login.php', data, function(response) {
             // console.log(JSON.parse(response).msg);
-            console.log(response);
-            const resp = JSON.parse(response);
+            // console.log(response);
             // return;
+            const resp = JSON.parse(response);
             if(resp.msg === 'logueado'){
                 console.log('Logueado!');
                 window.location = 'dashboard';
@@ -65,7 +61,7 @@ $(function() {
     // Cerrar sesión
     $('#logout').click(function(e) {
         e.preventDefault();
-        console.log('Logout')
+        // console.log('Logout')
         const data = {
             logout: 'Logout'
         }

@@ -18,65 +18,75 @@ class UserController {
 
         if(isset($data)){
             // return $data;
-            $passEncriptada = crypt($data['password'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-            // return $passEncriptada;
+            if(preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/', $data['email'])){
 
-            $item = 'email';
-            $valor = $data['email'];
-
-            $response = UserController::ctrShowUsers($table, $item, $valor);
-
-            if($response[0] == '0'){
-                return array(
-                    'res' => 'error',
-                    'msg' => 'email no coincide'
-                );
-            } else {
-
-                if($passEncriptada === $response['password']){
-                    // return 'iguales';
-                    $id = $response['id_usuario'];
-                    $email = $response['email'];
-
-                    // Mandar info para la data que ira en el token
-                    $token = Connection::jwt($id, $email);
-
-                    // Generar y codificar Token
-                    $jwt = Firebase\JWT\JWT::encode($token, 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew=', 'HS512');
-
-                    $item1 = 'token';
-                    $valor1 = $jwt;
-                    $item2 = 'fecha_exp_token';
-                    $valor2 = $token['exp'];
-                    $item3 = 'id_usuario';
-                    $valor3 = $id;
-
-                    // return $token;
-
-                    $update = UserController::ctrUpdateGlobal($table, $item1, $valor1, $item2, $valor2, $item3, $valor3);
-                    if($update == true){
-
-                        session_start();
-                        $_SESSION['login'] = true;
-                        $_SESSION['token'] = $jwt;
-                        $_SESSION['id_usuario'] = $id;
-
-                        return array(
-                            'res' => 'success',
-                            'msg' => 'logueado'
-                        );
-                    } else {
-                        return false;
-                    }
-     
-                } else {
+                $passEncriptada = crypt($data['password'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                // return $passEncriptada;
+    
+                $item = 'email';
+                $valor = $data['email'];
+    
+                $response = UserController::ctrShowUsers($table, $item, $valor);
+    
+                if($response[0] == '0'){
                     return array(
                         'res' => 'error',
-                        'msg' => 'password no coincide'
+                        'msg' => 'email no coincide'
                     );
-                }
+                } else {
+    
+                    if($passEncriptada === $response['password']){
+                        // return 'iguales';
+                        $id = $response['id_usuario'];
+                        $email = $response['email'];
+    
+                        // Mandar info para la data que ira en el token
+                        $token = Connection::jwt($id, $email);
+    
+                        // Generar y codificar Token
+                        $jwt = Firebase\JWT\JWT::encode($token, 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew=', 'HS512');
+    
+                        $item1 = 'token';
+                        $valor1 = $jwt;
+                        $item2 = 'fecha_exp_token';
+                        $valor2 = $token['exp'];
+                        $item3 = 'id_usuario';
+                        $valor3 = $id;
+    
+                        // return $token;
+    
+                        $update = UserController::ctrUpdateGlobal($table, $item1, $valor1, $item2, $valor2, $item3, $valor3);
+                        if($update == true){
+    
+                            session_start();
+                            $_SESSION['login'] = true;
+                            $_SESSION['token'] = $jwt;
+                            $_SESSION['id_usuario'] = $id;
+    
+                            return array(
+                                'res' => 'success',
+                                'msg' => 'logueado'
+                            );
+                        } else {
+                            return false;
+                        }
+         
+                    } else {
+                        return array(
+                            'res' => 'error',
+                            'msg' => 'password no coincide'
+                        );
+                    }
+    
+                }           
 
-            }       
+            } else {
+                return array(
+                    'res' => 'error',
+                    'msg' => 'email no valido'
+                );
+            }
+
             
         }
     }

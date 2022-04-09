@@ -49,7 +49,7 @@
       // <!-- Navbar -->
     include "view/app/navbar.php";
 
-        if(isset($_GET["url"]) ){
+        if(isset($_GET["url"]) ){ 
             
             if($_GET["url"] == "dashboard" ||
               $_GET["url"] == "logout" ||
@@ -57,11 +57,12 @@
                 
               include "app/".$_GET["url"].".php";
             } else {
-              include "app/".$_GET["url"].".php";
-
+              include "app/dashboard.php";
             }
           
-          } 
+        } else {
+          include "app/dashboard.php";
+        }
           
         include 'view/app/footer.php';
 
