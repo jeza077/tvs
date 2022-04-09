@@ -26,27 +26,31 @@ $(function() {
         if( $('#rememberMe').prop('checked') && !emailLocalStorage ){
             localStorage.setItem('email',  data.email);
             
+            // console.log('Si check');
+
         } else if( $('#rememberMe').prop('checked') && emailLocalStorage !== '' && emailLocalStorage !== data.email ) {
             // if( emailLocalStorage !== '' && emailLocalStorage !== data.email ) {
                 localStorage.removeItem('email');
                 localStorage.setItem('email',  data.email);
             // }     
 
-            console.log('Si check', data.email);
+            // console.log('Si check', data.email);
             // const emailLocalStorage = localStorage.setItem('email',  data.email);
         } else {
             // if( !emailLocalStorage ) {
                 localStorage.removeItem('email');
-            //     localStorage.setItem('email',  data.email);
+                localStorage.setItem('email',  data.email);
             // }     
-            console.log('No check');
+            // console.log('No check');
         }
         
 
-        $.post('ajax/login.php', data, function(res) {
-            console.log(JSON.parse(res));
-            // console.log(res);
-            if(res === 'true'){
+        $.post('ajax/login.php', data, function(response) {
+            // console.log(JSON.parse(response).msg);
+            console.log(response);
+            const resp = JSON.parse(response);
+            // return;
+            if(resp.msg === 'logueado'){
                 console.log('Logueado!');
                 window.location = 'dashboard';
             } else {

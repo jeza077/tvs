@@ -13,13 +13,17 @@ class UserModel {
             $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item");
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
             $stmt -> execute();
-            return $stmt -> fetch();
+            if($stmt->rowCount() > 0){
+                return $stmt -> fetch();
+            } else {
+                return $stmt -> errorInfo();
+            }
 
         } else {
 
             $stmt = Connection::connect()->prepare("SELECT * FROM $table");
             $stmt -> execute();
-            return $stmt -> fetchAll();
+            return $stmt -> fetchAll(POS::FETCH_CLASS);
 
         }
 
@@ -27,5 +31,24 @@ class UserModel {
         $stmt = null;
         
     } 
+
+    static public function mdlUpdateGlobal($table, $item1, $valor1, $item2, $valor2, $item3, $valor3){
+
+        $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1, $item2 = :$item2 WHERE $item3 = :$item3");
+        
+        $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+        $stmt->bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+        $stmt->bindParam(":".$item3, $valor3, PDO::PARAM_INT);
+        if($stmt->execute()){
+
+            return true;	
+
+        }else{
+
+            return $stmt -> errorInfo();
+        
+        }
+
+    }
 
 }
