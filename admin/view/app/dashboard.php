@@ -5,6 +5,11 @@
 
       <h2 id="examples">Examples Componets</h2>
 
+      <?php 
+        // echo $_SESSION['fecha']; 
+        // echo date('d/m/Y', $_SESSION['fecha']);
+      ?>
+
       <main class="ct-docs-content-col" role="main">
           <div class="ct-docs-page-title">                  
             <div class="avatar-group mt-3">

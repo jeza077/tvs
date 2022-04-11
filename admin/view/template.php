@@ -40,7 +40,7 @@
   <?php 
   if(isset($_SESSION['login']) && $_SESSION['login'] == true) {
 
-    echo '<body class="g-sidenav-show bg-gray-200 g-sidenav-hidden">';
+    echo '<body class="g-sidenav-show bg-gray-200 g-sidenav-pinned">';
 
     // <!-- SIDEBAR -->
     include "view/app/sidebar.php";

@@ -42,22 +42,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer position-absolute bottom-2 py-2 w-100">
-            <div class="container">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-12 col-md-12 my-auto ">
-                        <div class="copyright text-center text-sm text-muted">
-                            © <script>
-                            document.write(new Date().getFullYear())
-                            </script>,
-                            made with <i class="fa fa-heart"></i> by
-                            <a href="" class="font-weight-bold" target="_blank">Backen TVS</a>
-                            for a better web.
-                        </div>
-                    </div>            
-                </div>
-            </div>
-        </footer>
+
         <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
             <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
         </div>

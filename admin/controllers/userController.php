@@ -1,7 +1,8 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/tvs/vendor/autoload.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/tvs/models/connection.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/tvs/admin/vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/tvs/admin/models/connection.php';
+// date_default_timezone_set("America/Tegucigalpa");
 
 class UserController {
 
@@ -61,6 +62,7 @@ class UserController {
                             session_start();
                             $_SESSION['login'] = true;
                             $_SESSION['token'] = $jwt;
+                            $_SESSION['fecha'] = $token['exp'];
                             $_SESSION['id_usuario'] = $id;
     
                             return array(
