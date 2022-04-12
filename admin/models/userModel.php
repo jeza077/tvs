@@ -10,7 +10,11 @@ class UserModel {
 
         if($item != null){
 
-            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE $item = :$item");
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table AS u \n"
+            . "LEFT JOIN niveles AS n ON u.id_nivel = n.id_nivel\n"
+            . "LEFT JOIN estado as e ON u.id_estado = e.id_estado\n"
+            . " WHERE $item = :$item");
+
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
             $stmt -> execute();
             if($stmt->rowCount() > 0){
@@ -21,7 +25,10 @@ class UserModel {
 
         } else {
 
-            $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table AS u \n"
+            . "LEFT JOIN niveles AS n ON u.id_nivel = n.id_nivel\n"
+            . "LEFT JOIN estado as e ON u.id_estado = e.id_estado\n");
+            
             $stmt -> execute();
             return $stmt -> fetchAll(POS::FETCH_CLASS);
 

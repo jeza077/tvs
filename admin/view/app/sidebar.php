@@ -12,20 +12,20 @@
         <li class="nav-item mb-2 mt-0 ">
           <a data-bs-toggle="collapse" href="#ProfileNav" class="nav-link text-dark" aria-controls="ProfileNav" role="button" aria-expanded="false">
             <img src="assets/img/team-3.jpg" class="avatar">
-            <span class="nav-link-text ms-2 ps-1">User Admin</span>
+            <span class="nav-link-text ms-2 ps-1"><?php echo $_SESSION['nivel']; ?></span>
           </a>
           <div class="collapse" id="ProfileNav" style="">
             <ul class="nav ">
               <li class="nav-item">
                 <a class="nav-link text-dark" href="">
                   <span class="sidenav-mini-icon"> MP </span>
-                  <span class="sidenav-normal  ms-3  ps-1"> My Profile </span>
+                  <span class="sidenav-normal  ms-3  ps-1"> Mi perfil </span>
                 </a>
               </li>
               <li class="nav-item ">
                 <a class="nav-link text-dark " href="">
-                  <span class="sidenav-mini-icon"> S </span>
-                  <span class="sidenav-normal  ms-3  ps-1"> Settings </span>
+                  <span class="sidenav-mini-icon"> C </span>
+                  <span class="sidenav-normal  ms-3  ps-1"> Configuración </span>
                 </a>
               </li>
               <li class="nav-item">

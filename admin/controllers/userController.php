@@ -28,7 +28,8 @@ class UserController {
                 $valor = $data['email'];
     
                 $response = UserController::ctrShowUsers($table, $item, $valor);
-    
+                // return $response;
+
                 if($response[0] == '0'){
                     return array(
                         'res' => 'error',
@@ -61,6 +62,7 @@ class UserController {
     
                             session_start();
                             $_SESSION['login'] = true;
+                            $_SESSION['nivel'] = $response['nivel'];
                             $_SESSION['token'] = $jwt;
                             $_SESSION['fecha'] = $token['exp'];
                             $_SESSION['id_usuario'] = $id;

@@ -42,11 +42,12 @@ $(function() {
         
 
         $.post('ajax/login.php', data, function(response) {
-            // console.log(JSON.parse(response).msg);
+            // console.log(JSON.parse(response));
             // console.log(response);
             // return;
             const resp = JSON.parse(response);
             if(resp.msg === 'logueado'){
+
                 console.log('Logueado!');
                 Swal.fire({
                     icon: 'success',
@@ -57,7 +58,9 @@ $(function() {
                         window.location = 'dashboard';
                     }
                 })
+
             } else {
+
                 $('#remember').after('<div class="alert alert-danger text-white" id="alertError" role="alert">'+
                  '<strong>¡Error!</strong> Correo o contraseña incorrectos, intente nuevamente. </div>');
 
