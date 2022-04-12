@@ -40,7 +40,8 @@
   <?php 
   if(isset($_SESSION['login']) && $_SESSION['login'] == true) {
 
-    echo '<body class="g-sidenav-show bg-gray-200 g-sidenav-pinned">';
+    // echo '<body class="g-sidenav-show bg-gray-200 g-sidenav-pinned">';
+    echo '<body class="g-sidenav-show bg-gray-200 g-sidenav-hidden">';
 
     // <!-- SIDEBAR -->
     include "view/app/sidebar.php";
@@ -52,6 +53,7 @@
         if(isset($_GET["url"]) ){ 
             
             if($_GET["url"] == "dashboard" ||
+              $_GET["url"] == "categoryList" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 

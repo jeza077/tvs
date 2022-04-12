@@ -30,7 +30,7 @@ class UserModel {
             . "LEFT JOIN estado as e ON u.id_estado = e.id_estado\n");
             
             $stmt -> execute();
-            return $stmt -> fetchAll(POS::FETCH_CLASS);
+            return $stmt -> fetchAll(PDO::FETCH_CLASS);
 
         }
 
