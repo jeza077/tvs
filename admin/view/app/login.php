@@ -23,7 +23,7 @@
                                     <label>Password</label>
                                     <input type="password" class="form-control" id="passwordLogin" placeholder="•••••••••••••">
                                 </div>
-                                <div class="form-check form-switch d-flex align-items-center mb-3">
+                                <div class="form-check form-switch d-flex align-items-center mb-3" id="remember">
                                     <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                                     <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>  
                                 </div>

@@ -121,6 +121,8 @@
   <!-- Kanban scripts -->
   <script src="assets/js/plugins/dragula/dragula.min.js"></script>
   <script src="assets/js/plugins/jkanban/jkanban.js"></script>
+  <!-- Sweet ALert -->
+  <script src="assets/js/plugins/sweetalert.min.js"></script>
 
 
   <script>

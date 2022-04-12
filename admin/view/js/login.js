@@ -48,9 +48,23 @@ $(function() {
             const resp = JSON.parse(response);
             if(resp.msg === 'logueado'){
                 console.log('Logueado!');
-                window.location = 'dashboard';
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Bienvenido!',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = 'dashboard';
+                    }
+                })
             } else {
-                console.log('Email o contraseña incorrectas, intente nuevamente!');
+                $('#remember').after('<div class="alert alert-danger text-white" id="alertError" role="alert">'+
+                 '<strong>¡Error!</strong> Correo o contraseña incorrectos, intente nuevamente. </div>');
+
+                setTimeout(() => {
+                    $('#alertError').fadeOut(400, function() { $(this).remove(); });
+                }, 5000);
+                // console.log('Email o contraseña incorrectas, intente nuevamente!');
             }
 
         })
