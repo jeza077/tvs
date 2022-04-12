@@ -39,9 +39,9 @@
         </li>
         <hr class="horizontal light mt-0">
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link text-white active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <a data-bs-toggle="collapse" href="dashboard" class="nav-link text-white active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
             <i class="material-icons-round opacity-10">dashboard</i>
-            <span class="nav-link-text ms-2 ps-1">Home</span>
+            <span class="nav-link-text ms-2 ps-1">Dashboard</span>
           </a>          
         </li>
         <li class="nav-item mt-3">
@@ -49,22 +49,57 @@
         </li>
   
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link text-dark " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+          <a data-bs-toggle="collapse" href="#category" class="nav-link text-dark " aria-controls="category" role="button" aria-expanded="false">
             <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
-            <span class="nav-link-text ms-2 ps-1">Applications</span>
+            <span class="nav-link-text ms-2 ps-1">Categorias</span>
           </a>
-          <div class="collapse " id="applicationsExamples">
+          <div class="collapse " id="category">
             <ul class="nav ">              
               <li class="nav-item ">
                 <a class="nav-link text-dark " href="">
-                  <span class="sidenav-mini-icon"> S </span>
-                  <span class="sidenav-normal  ms-2  ps-1"> Stats </span>
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Nueva categoria </span>
                 </a>
               </li>
             </ul>
           </div>
         </li>
+
         <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#client" class="nav-link text-dark " aria-controls="client" role="button" aria-expanded="false">
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
+            <span class="nav-link-text ms-2 ps-1">Clientes</span>
+          </a>
+          <div class="collapse " id="client">
+            <ul class="nav ">              
+              <li class="nav-item ">
+                <a class="nav-link text-dark " href="">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Nuevo cliente </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#product" class="nav-link text-dark " aria-controls="product" role="button" aria-expanded="false">
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">shopping_basket</i>
+            <span class="nav-link-text ms-2 ps-1">Productos</span>
+          </a>
+          <div class="collapse " id="product">
+            <ul class="nav ">              
+              <li class="nav-item ">
+                <a class="nav-link text-dark " href="">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Nuevo producto </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        
+        <!-- <li class="nav-item">
           <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link text-dark " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
             <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">shopping_basket</i>
             <span class="nav-link-text ms-2 ps-1">Ecommerce</span>
@@ -129,18 +164,8 @@
               </li>              
             </ul>
           </div>
-        </li>
+        </li> -->
        
-        <li class="nav-item">
-          <hr class="horizontal light" />
-          <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder text-dark">DOCS</h6>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="" target="_blank">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">receipt_long</i>
-            <span class="nav-link-text ms-2 ps-1">Changelog</span>
-          </a>
-        </li>
       </ul>
     </div>
   </aside>
