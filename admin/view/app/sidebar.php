@@ -39,7 +39,7 @@
         </li>
         <hr class="horizontal light mt-0">
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="dashboard" class="nav-link text-white active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <a href="dashboard" class="nav-link text-white active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
             <i class="material-icons-round opacity-10">dashboard</i>
             <span class="nav-link-text ms-2 ps-1">Dashboard</span>
           </a>          
@@ -56,7 +56,7 @@
           <div class="collapse " id="category">
             <ul class="nav ">              
               <li class="nav-item ">
-                <a class="nav-link text-dark " href="categoryList">
+                <a class="nav-link text-dark " href="category-list">
                   <span class="sidenav-mini-icon"> L </span>
                   <span class="sidenav-normal  ms-2  ps-1"> Lista categorias </span>
                 </a>

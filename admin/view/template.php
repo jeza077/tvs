@@ -22,6 +22,9 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- Datatable -->
+  <link rel="stylesheet" href="assets/css/dataTables.bootstrap5.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.css"/> -->
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/backendtvs.min.css?v=3.0.3" rel="stylesheet" />
   <style>
@@ -53,7 +56,7 @@
         if(isset($_GET["url"]) ){ 
             
             if($_GET["url"] == "dashboard" ||
-              $_GET["url"] == "categoryList" ||
+              $_GET["url"] == "category-list" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 
@@ -123,6 +126,10 @@
   <!-- Kanban scripts -->
   <script src="assets/js/plugins/dragula/dragula.min.js"></script>
   <script src="assets/js/plugins/jkanban/jkanban.js"></script>
+  <!-- Datatable -->
+  <!-- <script src="assets/js/plugins/dataTables.bootstrap5.min.js"></script> -->
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
+
   <!-- Sweet ALert -->
   <script src="assets/js/plugins/sweetalert.min.js"></script>
 
@@ -138,7 +145,9 @@
   </script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="assets/js/backendtvs.min.js?v=3.0.3"></script>
+  <script src="view/js/template.js"></script>
   <script src="view/js/login.js"></script>
+  <script src="view/js/category-list.js"></script>
 </body>
 
 </html>
