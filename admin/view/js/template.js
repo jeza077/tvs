@@ -1,8 +1,4 @@
-// $('#tableCategories').DataTable();
-
-
-
-// FUNCION DATATABLE DINAMICA
+// FUNCION DATATABLES DINAMICA
 const dataTableAjax = (selector, archivoAjax) => {
 
     $(selector).DataTable( {
@@ -42,3 +38,56 @@ const dataTableAjax = (selector, archivoAjax) => {
     } );
     
 }
+
+// CHOICES
+if (document.getElementById('choices-category')) {
+  var element = document.getElementById('choices-category');
+  const example = new Choices(element, {
+    searchEnabled: false
+  });
+};
+
+if (document.getElementById('choices-sizes')) {
+  var element = document.getElementById('choices-sizes');
+  const example = new Choices(element, {
+    searchEnabled: false
+  });
+};
+
+if (document.getElementById('choices-currency')) {
+  var element = document.getElementById('choices-currency');
+  const example = new Choices(element, {
+    searchEnabled: false
+  });
+};
+
+if (document.getElementById('choices-tags')) {
+  var tags = document.getElementById('choices-tags');
+  const examples = new Choices(tags, {
+    removeItemButton: true
+  });
+
+  examples.setChoices(
+    [{
+        value: 'One',
+        label: 'Expired',
+        disabled: true
+      },
+      {
+        value: 'Two',
+        label: 'Out of Stock',
+        selected: true
+      }
+    ],
+    'value',
+    'label',
+    false,
+  );
+}
+
+// QUILL
+if (document.getElementById('edit-deschiption')) {
+  var quill = new Quill('#edit-deschiption', {
+    theme: 'snow' // Specify theme in configuration
+  });
+};

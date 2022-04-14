@@ -41,3 +41,36 @@ dataTableAjax('#tableCategory', 'ajax/datatable.category.php');
 //     }
 // });
 
+// Guardar categoria
+document.querySelector('form')
+    .addEventListener('submit', e => {
+        e.preventDefault();
+
+        const data = Object.fromEntries(
+            new FormData(e.target)
+        );
+
+        
+        $.post('ajax/category.php', data, function(response) {
+            // console.log(JSON.parse(response));
+            // console.log(response);
+            
+            // return;
+            const resp = JSON.parse(response);
+            if(resp.res === 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: resp.msg,
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = 'category-list';
+                    }
+                })
+            }
+            
+            
+        })
+
+    })
+

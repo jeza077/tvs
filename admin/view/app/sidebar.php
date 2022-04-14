@@ -62,7 +62,7 @@
                 </a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link text-dark " href="">
+                <a class="nav-link text-dark " href="new-category">
                   <span class="sidenav-mini-icon"> N </span>
                   <span class="sidenav-normal  ms-2  ps-1"> Nueva categoria </span>
                 </a>

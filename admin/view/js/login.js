@@ -48,7 +48,7 @@ $(function() {
             const resp = JSON.parse(response);
             if(resp.msg === 'logueado'){
 
-                console.log('Logueado!');
+                // console.log('Logueado!');
                 Swal.fire({
                     icon: 'success',
                     title: '¡Bienvenido!',

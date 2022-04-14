@@ -32,4 +32,18 @@ class CategoryModel {
 
     }
 
+    static public function mdlSaveCategory($table, $data){
+     
+        $stmt = Connection::connect()->prepare("INSERT INTO $table (categorias) VALUES (:categorias)");
+
+        $stmt -> bindParam(":categorias", $data, PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return true;
+        } else {
+            return $stmt -> errorInfo();
+        }
+
+    }
+
 }

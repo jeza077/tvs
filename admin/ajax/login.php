@@ -13,7 +13,7 @@
     //     break;
     // }
 
-    class AjaxUser{
+    class AjaxLogin{
 
         public $email;
         public $password;
@@ -44,14 +44,14 @@
     
     
     if(isset($_POST["email"])){
-        $login = new AjaxUser();
+        $login = new AjaxLogin();
         $login->email = $_POST["email"];
         $login->password = $_POST["password"];
         $login->ajaxLogin();
     }
     
     if(isset($_POST["logout"])){
-        $salir = new AjaxUser();
+        $salir = new AjaxLogin();
         $salir->logout = $_POST["logout"];
         $salir->ajaxLogout();
     }

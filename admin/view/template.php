@@ -57,6 +57,7 @@
             
             if($_GET["url"] == "dashboard" ||
               $_GET["url"] == "category-list" ||
+              $_GET["url"] == "new-category" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 
@@ -123,6 +124,10 @@
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/choices.min.js"></script>
+  <script src="assets/js/plugins/quill.min.js"></script>
+  <script src="assets/js/plugins/multistep-form.js"></script>
+
   <!-- Kanban scripts -->
   <script src="assets/js/plugins/dragula/dragula.min.js"></script>
   <script src="assets/js/plugins/jkanban/jkanban.js"></script>

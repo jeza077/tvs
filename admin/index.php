@@ -2,6 +2,7 @@
 
 require_once 'vendor/autoload.php';
 require_once 'controllers/templateController.php';
+require_once 'controllers/helperController.php';
 require_once 'controllers/userController.php';
 require_once 'controllers/categoryController.php';
 
