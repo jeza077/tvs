@@ -23,7 +23,7 @@ class CategoryController {
             if($response === true){
 
                 $resp = 'success';
-                $msg = 'Categoría guardada conrrectamente.';
+                $msg = 'Categoría guardada correctamente.';
 
                 $response = HelperController::ctrReturnResponseJson($resp, $msg);
 
@@ -43,7 +43,27 @@ class CategoryController {
             if($response === true){
 
                 $resp = 'success';
-                $msg = 'Categoría editada conrrectamente.';
+                $msg = 'Categoría editada correctamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            }
+
+        }
+    }
+
+    static public function ctrDeleteCategory($table, $id){
+
+        if(isset($id)){
+
+            $response = CategoryModel::mdlDeleteCategory($table, $id);
+
+            if($response === true){
+
+                $resp = 'success';
+                $msg = 'Categoría eliminada correctamente.';
 
                 $response = HelperController::ctrReturnResponseJson($resp, $msg);
 

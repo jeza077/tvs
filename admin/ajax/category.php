@@ -11,6 +11,8 @@ class AjaxCategory{
     public $idEditCategory;
     public $editCategory;
 
+    public $idDeleteCategory;
+
     public function ajaxShowCategory(){
 
         $table = 'categorias';
@@ -46,6 +48,17 @@ class AjaxCategory{
         echo json_encode($response);
 
     }
+    
+    public function ajaxDeleteCategory(){
+
+        $table = 'categorias';
+        $id = $this->idDeleteCategory;
+
+        $response = CategoryController::ctrDeleteCategory($table, $id);
+
+        echo json_encode($response);
+
+    }
 
     
 
@@ -72,4 +85,11 @@ if(isset($_POST['idEditCategory'])){
     $idEditCategory->idEditCategory = $_POST['idEditCategory'];
     $idEditCategory->editCategory = $_POST['editCategory'];
     $idEditCategory->ajaxUpdateCategory();
+}
+
+// Eliminar Categoría
+if(isset($_POST['idDeleteCategory'])){
+    $idDeleteCategory = new AjaxCategory();
+    $idDeleteCategory->idDeleteCategory = $_POST['idDeleteCategory'];
+    $idDeleteCategory->ajaxDeleteCategory();
 }

@@ -1,3 +1,16 @@
+<?php 
+
+
+    // var_dump($_GET);
+    $table = 'categorias';
+    $item = 'id_categoria';
+    $valor = $_GET['id'];
+
+    $response = CategoryController::ctrShowCategories($table, $item, $valor);
+
+    // var_dump($response);
+?>
+
 <div class="container-fluid py-4">
     <div class="row">
         <!-- ENTER CODE HERE -->
@@ -12,16 +25,6 @@
             <div class="pt-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                 <h5 class="font-weight-bolder">Información categoría</h5>
                 <div class="multisteps-form__content">
-
-                <?php 
-                    $table = 'categorias';
-                    $item = 'id_categoria';
-                    $valor = $_GET['id'];
-            
-                    $response = CategoryController::ctrShowCategories($table, $item, $valor);
-
-                    // var_dump($response);
-                ?>
                     <div class="mt-5">
                         <div class="col-12">
                         <div class="input-group input-group-dynamic">

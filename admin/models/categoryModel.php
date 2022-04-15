@@ -44,6 +44,10 @@ class CategoryModel {
             return $stmt -> errorInfo();
         }
 
+        $stmt -> close();
+
+		$stmt = null;
+
     }
 
     static public function mdlUpdateCategory($table, $id, $valor){
@@ -58,7 +62,27 @@ class CategoryModel {
             return $stmt -> errorInfo();
         }
 
-        
+        $stmt -> close();
+
+		$stmt = null;
     }
+
+    static public function mdlDeleteCategory($table, $id){
+
+		$stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_categoria = :id_categoria");
+
+		$stmt -> bindParam(":id_categoria", $id, PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+			return true;
+		}else{
+            return $stmt -> errorInfo();
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
 
 }
