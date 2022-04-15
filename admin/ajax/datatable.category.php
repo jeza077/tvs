@@ -13,11 +13,13 @@ class CategoryDatatable{
 
         // echo json_encode($categories);
 
-        $buttons = "<button class='btn btn-warning btn-xs me-1' data-toggle='tooltip' data-original-title='Editar categoría'>Editar</button><button class='btn btn-outline-danger btn-xs' data-toggle='tooltip' data-original-title='Eliminar categoría'>Eliminar</button>";
+        // $buttons = "<button class='btn btn-warning btn-xs me-1' data-toggle='tooltip' data-original-title='Editar categoría'>Editar</button><button class='btn btn-outline-danger btn-xs' data-toggle='tooltip' data-original-title='Eliminar categoría'>Eliminar</button>";
         
         $dataJson = '{
             "data": [';
             for($i = 0; $i < count($categories); $i++){
+
+                $buttons = "<button class='btn btn-warning btn-xs me-1' data-toggle='tooltip' data-original-title='Editar categoría' id='btnEditCategory' idCategory='".$categories[$i]['id_categoria']."'>Editar</button><button class='btn btn-outline-danger btn-xs' data-toggle='tooltip' data-original-title='Eliminar categoría' idCategory='".$categories[$i]['id_categoria']."'>Eliminar</button>";
 
                 $key = "<div class='d-flex px-2 py-1'><div class='text-md font-weight-bold mb-0'>".($i+1)."</div></div>";
                 $category = "<div class='text-md font-weight-bold mb-0'>".$categories[$i]["categorias"]."</div>";

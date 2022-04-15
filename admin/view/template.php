@@ -58,6 +58,7 @@
             if($_GET["url"] == "dashboard" ||
               $_GET["url"] == "category-list" ||
               $_GET["url"] == "new-category" ||
+              $_GET["url"] == "edit-category" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 
@@ -152,7 +153,7 @@
   <script src="assets/js/backendtvs.min.js?v=3.0.3"></script>
   <script src="view/js/template.js"></script>
   <script src="view/js/login.js"></script>
-  <script src="view/js/category-list.js"></script>
+  <script src="view/js/category.js"></script>
 </body>
 
 </html>

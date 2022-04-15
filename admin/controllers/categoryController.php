@@ -35,4 +35,23 @@ class CategoryController {
 
     }
 
+    static public function ctrUpdateCategory($table, $id, $valor){
+        if(isset($id)){
+
+            $response = CategoryModel::mdlUpdateCategory($table, $id, $valor);
+
+            if($response === true){
+
+                $resp = 'success';
+                $msg = 'Categoría editada conrrectamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            }
+
+        }
+    }
+
 }
