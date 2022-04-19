@@ -59,6 +59,8 @@
               $_GET["url"] == "category-list" ||
               $_GET["url"] == "new-category" ||
               $_GET["url"] == "edit-category" ||
+              $_GET["url"] == "new-product" ||
+              $_GET["url"] == "product-list" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 
@@ -128,6 +130,7 @@
   <script src="assets/js/plugins/choices.min.js"></script>
   <script src="assets/js/plugins/quill.min.js"></script>
   <script src="assets/js/plugins/multistep-form.js"></script>
+  <!-- <script src="assets/js/plugins/validation.js"></script> -->
 
   <!-- Kanban scripts -->
   <script src="assets/js/plugins/dragula/dragula.min.js"></script>
@@ -135,6 +138,7 @@
   <!-- Datatable -->
   <!-- <script src="assets/js/plugins/dataTables.bootstrap5.min.js"></script> -->
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
   <!-- Sweet ALert -->
   <script src="assets/js/plugins/sweetalert.min.js"></script>
@@ -154,6 +158,7 @@
   <script src="view/js/template.js"></script>
   <script src="view/js/login.js"></script>
   <script src="view/js/category.js"></script>
+  <script src="view/js/product.js"></script>
 </body>
 
 </html>

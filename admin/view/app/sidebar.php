@@ -96,7 +96,13 @@
           <div class="collapse " id="product">
             <ul class="nav ">              
               <li class="nav-item ">
-                <a class="nav-link text-dark " href="">
+                <a class="nav-link text-dark " href="product-list">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Lista productos </span>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link text-dark " href="new-product">
                   <span class="sidenav-mini-icon"> N </span>
                   <span class="sidenav-normal  ms-2  ps-1"> Nuevo producto </span>
                 </a>
