@@ -10,6 +10,7 @@ class AjaxProduct{
     public $priceProduct;
     public $categoryProduct;    
 
+    public $idDeleteProduct;
 
     // public function ajaxShowCategory(){
 
@@ -53,16 +54,16 @@ class AjaxProduct{
 
     // }
     
-    // public function ajaxDeleteCategory(){
+    public function ajaxDeleteProduct(){
 
-    //     $table = 'categorias';
-    //     $id = $this->idDeleteCategory;
+        $table = 'producto';
+        $id = $this->idDeleteProduct;
 
-    //     $response = CategoryController::ctrDeleteCategory($table, $id);
+        $response = ProductController::ctrDeleteProduct($table, $id);
 
-    //     echo json_encode($response);
+        echo json_encode($response);
 
-    // }
+    }
 
     
 
@@ -94,9 +95,9 @@ if(isset($_POST["nameProduct"])){
 //     $idEditCategory->ajaxUpdateCategory();
 // }
 
-// // Eliminar Categoría
-// if(isset($_POST['idDeleteCategory'])){
-//     $idDeleteCategory = new AjaxCategory();
-//     $idDeleteCategory->idDeleteCategory = $_POST['idDeleteCategory'];
-//     $idDeleteCategory->ajaxDeleteCategory();
-// }
+// Eliminar Producto
+if(isset($_POST['idDeleteProduct'])){
+    $idDeleteProduct = new AjaxProduct();
+    $idDeleteProduct->idDeleteProduct = $_POST['idDeleteProduct'];
+    $idDeleteProduct->ajaxDeleteProduct();
+}

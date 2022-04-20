@@ -61,42 +61,8 @@ dataTableAjax('#tableProducts', 'ajax/datatables/datatable.product.php');
 //     }
 // });
 
-// $('#tableProducts').DataTable( {
-//     "responsive": true,
-//     "autoWidth": false,    
-//     "ajax": 'ajax/datatables/datatable.product.php',
-//     "deferRender": true,
-//     "retrieve": true,
-//     "processing": true,
-//     "language": {
 
-//       "sProcessing":     "Procesando...",
-//       "sLengthMenu":     "Mostrar _MENU_ registros",
-//       "sZeroRecords":    "No se encontraron resultados",
-//       "sEmptyTable":     "Ningún dato disponible en esta tabla",
-//       "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-//       "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-//       "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-//       "sInfoPostFix":    "",
-//       "sSearch":         "Buscar:",
-//       "sUrl":            "",
-//       "sInfoThousands":  ",",
-//       "sLoadingRecords": "Cargando...",
-//       "oPaginate": {
-//       "sFirst":    "Primero",
-//       "sLast":     "Último",
-//       "sNext":     "Siguiente",
-//       "sPrevious": "Anterior"
-//       },
-//       "oAria": {
-//         "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-//         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-//       }
-
-//     }
-
-// } );
-
+// Guardar un nuevo producto
 const productForm = document.querySelector('form#productForm')
 if(productForm){
     productForm.addEventListener('submit', e => {
@@ -131,3 +97,67 @@ if(productForm){
 
     })
 }
+
+/**** Eliminar un producto ****/
+$(document).on('click', '#btnDeleteProduct', function (){
+    
+    const idProduct = $(this).attr('idProduct');
+
+    // console.log(idProduct);
+    // return;
+    
+    Swal.fire({
+        title: '¿Está seguro de querer borrar el producto?',
+        text: "Si no lo está, puede cancelar la acción.",
+        icon: 'warning',
+        showDenyButton: true,
+        // showCancelButton: true,
+        confirmButtonColor: '#43a047',
+        denyButtonColor: '#f44335',
+        confirmButtonText: '¡Sí, borrar!',
+        denyButtonText: 'Cancelar',
+      }).then(function(result){
+        if (result.isConfirmed) {
+
+            const data = {
+                idDeleteProduct: idProduct
+            }
+            // console.log(data)
+            // return;
+            $.post('ajax/product.php', data, function (response) {
+                console.log(JSON.parse(response));
+                console.log(response);
+
+                const resp = JSON.parse(response);
+                if(resp.res === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: resp.msg,
+                        confirmButtonColor: '#43a047',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'product-list';
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salio mal, intenta nuevamente.',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'product-list';
+                        }
+                    })
+                }
+           
+            })
+
+        } else if (result.isDenied) {
+            Swal.fire('Acción cancelada.', '', 'info')
+        }
+    });
+
+
+})

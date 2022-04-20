@@ -55,4 +55,23 @@ class ProductModel {
 		$stmt = null;
 
     }
+
+    static public function mdlDeleteProduct($table, $id){
+
+		$stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_producto = :id_producto");
+
+		$stmt -> bindParam(":id_producto", $id, PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+			return true;
+		}else{
+            return $stmt -> errorInfo();
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
 }

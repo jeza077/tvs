@@ -36,4 +36,25 @@ class ProductController {
 
     }
 
+    static public function ctrDeleteProduct($table, $id){
+
+        if(isset($id)){
+
+            $response = ProductModel::mdlDeleteProduct($table, $id);
+
+            if($response === true){
+
+                $resp = 'success';
+                $msg = 'Producto eliminado correctamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            }
+
+        }
+    }
+
+
 }
