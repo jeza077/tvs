@@ -2,7 +2,38 @@
 
 require_once 'connection.php';
 
-class CategoryProduct {
+class ProductModel {
+
+    static public function mdlShowProducts($table, $item, $valor){
+
+        if($item != null){
+
+            $stmt = Connection::connect()->prepare("SELECT p.*, p.descripcion_producto as descrip, c.* FROM $table AS p"
+            . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
+            . " WHERE $item = :$item");
+
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt -> execute();
+            if($stmt->rowCount() > 0){
+                return $stmt -> fetch();
+            } else {
+                return $stmt -> errorInfo();
+            }
+
+        } else {
+
+            $stmt = Connection::connect()->prepare("SELECT p.*, p.descripcion_producto as descrip, c.* FROM $table AS p"
+            . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria");
+            
+            $stmt -> execute();
+            return $stmt -> fetchAll();
+
+        }
+
+        $stmt -> close();
+        $stmt = null;
+
+    }
 
     static public function mdlSaveProduct($table, $data){
      

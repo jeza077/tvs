@@ -7,7 +7,14 @@
 
             <?php 
                 // echo $_SESSION['fecha']; 
-                // echo date('d/m/Y', $_SESSION['fecha']);
+                // $table = "producto";
+                // $item = null;
+                // $valor = null;
+                // $products = ProductController::ctrShowProducts($table, $item, $valor);
+
+                // echo '<pre>';
+                // var_dump($products);
+                // echo '</pre>';
             ?>
 
             <main class="ct-docs-content-col" role="main">
@@ -19,24 +26,29 @@
                 <hr class="ct-docs-hr"> 
                 <div class="card">
                 <div class="table-responsive p-4">
-                    <table class="table align-items-center mb-0" id="tableCategory">
+                    <table class="table align-items-center responsive mb-0" id="tableProducts" style="width:100%">
                     <thead>
                         <tr>
-                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7" width="25%">No.</th>
-                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="50%">Producto</th>
-                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2"width="25%">Acciones</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7" width="5%">No.</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="8%">Producto</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="20%">Categoría</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="15%">Descripción</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="20%">Precio</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="15%">Acciones</th>
                         </tr>
                     </thead>
-                    <!-- <tbody>
+                    <!-- <tbody> -->
                         <?php 
-                            // $table = "categorias";
+                            // $table = "producto";
                             // $item = null;
                             // $valor = null;
-                            // $categories = CategoryController::ctrShowCategories($table, $item, $valor);
+                            // $products = ProductController::ctrShowProducts($table, $item, $valor);
 
-                            // // var_dump($categories);
+                            // // echo '<pre>';
+                            // // var_dump($products);
+                            // // echo '</pre>';
 
-                            // foreach ($categories as $key => $value){
+                            // foreach ($products as $key => $value){
                                 
                             //     echo   '<tr>
                             //                 <td scope="row">
@@ -46,13 +58,30 @@
                             //                     </div>
                             //                     </div>
                             //                 </td>
+                            //                 <td class"align-middle text-center">
+                                            
+                            //                     <div class="text-md font-weight-bold mb-0">
+                            //                     '.$value["nombre_producto"].'
+                            //                     </div>
+                            //                 </td>   
                             //                 <td>
                             //                     <div class="text-md font-weight-bold mb-0">
                             //                     '.$value["categorias"].'
                             //                     </div>
                             //                 </td>   
-                            //                 <td class"align-middle text-center">
-                            //                     <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Editar categoría">
+                            //                 <td>
+                            //                     <div class="text-md font-weight-bold mb-0">
+                            //                     '.$value["descripcion_producto"].'
+                            //                     </div>
+                            //                 </td>   
+                            //                 <td>
+                            //                     <div class="text-md font-weight-bold mb-0">
+                            //                     '.$value["precio"].'
+                            //                     </div>
+                            //                 </td>  
+                            //                 <td>
+
+                            //                 <button class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Editar categoría">
                             //                     Editar
                             //                     </button>
                             //                     <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-original-title="Eliminar categoría">
@@ -65,7 +94,7 @@
 
                         ?>
 
-                    </tbody> -->
+                    <!-- </tbody> -->
                     </table>
                 </div>
                 </div>

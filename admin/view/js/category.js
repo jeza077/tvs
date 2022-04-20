@@ -1,5 +1,5 @@
 
-dataTableAjax('#tableCategory', 'ajax/datatable.category.php');
+dataTableAjax('#tableCategory', 'ajax/datatables/datatable.category.php');
 
 
 // $.ajax({

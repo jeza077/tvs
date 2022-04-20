@@ -57,17 +57,27 @@
                         </div>
                     </div>
                     <!-- <div class="row"> -->
-                        <div class="col-12">
+                    <div class="col-12">
+                        <!-- <label class="mt-4">Descripción</label>
+                        <input type="text" name="descriptionProduct"> -->
+
                         <label class="mt-4">Descripción</label>
                         <p class="form-text text-muted text-xs ms-1 d-inline">
                             (optional)
                         </p>
-                        <div class="ql-toolbar ql-snow">                            
-                            <div id="edit-deschiption" class="h-50 ql-container ql-snow">
-                                <!-- <input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL"> -->
-                                <input type="text" name="descriptionProduct">
-                            </div>
+                        <!-- <input type="text" name="descriptionProduct"> -->
+
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" name="descriptionProduct" style="border:1px solid #d2d6da"></textarea>
                         </div>
+
+                        </textarea>
+                        <!-- <div class="ql-toolbar ql-snow">                             -->
+                            <!-- <div id="edit-deschiption" class="h-50 ql-container ql-snow"> -->
+                                <!-- <input type="text" name="descriptionProduct" id="descriptionProduct" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL"> -->
+                                <!-- <input type="text" name="descriptionProduct" id="descriptionProduct"> -->
+                            <!-- </div> -->
+                        <!-- </div> -->
                         </div>
                     <!-- </div> -->
                     <div class="button-row d-flex mt-4">

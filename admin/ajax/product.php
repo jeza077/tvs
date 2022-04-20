@@ -6,7 +6,7 @@ include_once('../models/productModel.php');
 class AjaxProduct{
 
     public $nameProduct;
-    // public $descriptionProduct;
+    public $descriptionProduct;
     public $priceProduct;
     public $categoryProduct;    
 
@@ -28,7 +28,7 @@ class AjaxProduct{
         $table = 'producto';
         $data = array(
             'nameProduct' => $this->nameProduct,
-            'descriptionProduct' => 'nueva descripcion',
+            'descriptionProduct' => $this->descriptionProduct,
             'priceProduct' => $this->priceProduct,
             'categoryProduct' => $this->categoryProduct
         );
@@ -80,6 +80,7 @@ class AjaxProduct{
 if(isset($_POST["nameProduct"])){
     $products = new AjaxProduct();
     $products->nameProduct = $_POST["nameProduct"];
+    $products->descriptionProduct = $_POST["descriptionProduct"];
     $products->priceProduct = $_POST["priceProduct"];
     $products->categoryProduct = $_POST["categoryProduct"];
     $products->ajaxSaveProduct();
