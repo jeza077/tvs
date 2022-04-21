@@ -71,10 +71,16 @@ if(productForm){
             new FormData(e.target)
         );
 
-        // console.log(data);
-        // return;
+        // Quitar salto de linea en string de descripcion del producto
+        let saveDescription = data.descriptionProduct;
+        saveDescription = saveDescription.replace(/(\r\n|\n|\r)/gm,"");
+        
+        const saveDataValidated = {
+            ...data,
+            descriptionProduct: saveDescription
+        }
 
-        $.post('ajax/product.php', data, function(response) {
+        $.post('ajax/product.php', saveDataValidated, function(response) {
             console.log(JSON.parse(response));
             console.log(response);
             
@@ -130,12 +136,12 @@ if(formEditProduct){
         );
 
         // Quitar salto de linea en string de descripcion del producto
-        let string = data.editDescriptionProduct;
-        string = string.replace(/(\r\n|\n|\r)/gm,"");
+        let editDescription = data.editDescriptionProduct;
+        editDescription = editDescription.replace(/(\r\n|\n|\r)/gm,"");
         
         const dataValidated = {
             ...data,
-            editDescriptionProduct: string
+            editDescriptionProduct: editDescription
         }
 
         // console.log((dataValidated));
