@@ -5,24 +5,28 @@ include_once('../models/productModel.php');
 
 class AjaxProduct{
 
+    public $idProduct;
+
     public $nameProduct;
     public $descriptionProduct;
     public $priceProduct;
     public $categoryProduct;    
 
+    public $idEditProduct;
+
     public $idDeleteProduct;
 
-    // public function ajaxShowCategory(){
+    public function ajaxShowProduct(){
 
-    //     $table = 'categorias';
-    //     $item = 'id_categoria';
-    //     $valor = $this->idCategory;
+        $table = 'producto';
+        $item = 'id_producto';
+        $valor = $this->idProduct;
 
-    //     $response = CategoryController::ctrShowCategories($table, $item, $valor);
+        $response = ProductController::ctrShowProducts($table, $item, $valor);
 
-    //     echo json_encode($response);
+        echo json_encode($response);
 
-    // }
+    }
 
     public function ajaxSaveProduct(){
 
@@ -42,17 +46,22 @@ class AjaxProduct{
     }
 
 
-    // public function ajaxUpdateCategory(){
+    public function ajaxUpdateProduct(){
 
-    //     $table = 'categorias';
-    //     $id = $this->idEditCategory;
-    //     $valor = $this->editCategory;
+        $table = 'producto';
+        $data = array(
+            'nameProduct' => $this->nameProduct,
+            'descriptionProduct' => $this->descriptionProduct,
+            'priceProduct' => $this->priceProduct,
+            'categoryProduct' => $this->categoryProduct,
+            'idProduct' => $this->idEditProduct
+        );
 
-    //     $response = CategoryController::ctrUpdateCategory($table, $id, $valor);
+        $response = ProductController::ctrUpdateProduct($table, $data);
 
-    //     echo json_encode($response);
+        echo json_encode($response);
 
-    // }
+    }
     
     public function ajaxDeleteProduct(){
 
@@ -70,14 +79,14 @@ class AjaxProduct{
 }
 
 
-// Mostrar Categoría
-// if(isset($_POST['idCategory'])){
-//     $idCategory = new AjaxCategory();
-//     $idCategory->idCategory = $_POST['idCategory'];
-//     $idCategory->ajaxShowCategory();
-// }
+// Mostrar Producto
+if(isset($_POST['idProduct'])){
+    $idProduct = new AjaxProduct();
+    $idProduct->idProduct = $_POST['idProduct'];
+    $idProduct->ajaxShowProduct();
+}
 
-// Guardar Categoría
+// Guardar Producto
 if(isset($_POST["nameProduct"])){
     $products = new AjaxProduct();
     $products->nameProduct = $_POST["nameProduct"];
@@ -87,13 +96,16 @@ if(isset($_POST["nameProduct"])){
     $products->ajaxSaveProduct();
 }
 
-// // Editar Categoría
-// if(isset($_POST['idEditCategory'])){
-//     $idEditCategory = new AjaxCategory();
-//     $idEditCategory->idEditCategory = $_POST['idEditCategory'];
-//     $idEditCategory->editCategory = $_POST['editCategory'];
-//     $idEditCategory->ajaxUpdateCategory();
-// }
+// Editar Producto
+if(isset($_POST['idEditProduct'])){
+    $editProduct = new AjaxProduct();
+    $editProduct->idEditProduct = $_POST['idEditProduct'];
+    $editProduct->nameProduct = $_POST["editNameProduct"];
+    $editProduct->descriptionProduct = $_POST["editDescriptionProduct"];
+    $editProduct->priceProduct = $_POST["editPriceProduct"];
+    $editProduct->categoryProduct = $_POST["editCategoryProduct"];
+    $editProduct->ajaxUpdateProduct();
+}
 
 // Eliminar Producto
 if(isset($_POST['idDeleteProduct'])){

@@ -62,7 +62,7 @@ dataTableAjax('#tableProducts', 'ajax/datatables/datatable.product.php');
 // });
 
 
-// Guardar un nuevo producto
+/**** Guardar un nuevo producto ****/
 const productForm = document.querySelector('form#productForm')
 if(productForm){
     productForm.addEventListener('submit', e => {
@@ -97,6 +97,74 @@ if(productForm){
 
     })
 }
+
+
+/**** Editar producto ****/
+$(document).on('click', '#btnEditProduct', function (){
+    // console.log('holaaa')  
+    const idProduct = $(this).attr('idProduct');
+    const data = {
+        idProduct: idProduct
+    }
+    
+    $.post('ajax/product.php', data, function (response) {
+        console.log(JSON.parse(response));
+        console.log(response);
+
+        if(response){
+            window.location = "index.php?url=edit-product&id="+idProduct;
+        } else {
+            console.log('no viene resp');
+        }
+
+    })
+})
+const formEditProduct = document.querySelector('form#editProductForm');
+if(formEditProduct){ 
+    formEditProduct.addEventListener('submit', e => {
+        e.preventDefault();
+        
+
+        const data = Object.fromEntries(
+            new FormData(e.target)
+        );
+
+        // Quitar salto de linea en string de descripcion del producto
+        let string = data.editDescriptionProduct;
+        string = string.replace(/(\r\n|\n|\r)/gm,"");
+        
+        const dataValidated = {
+            ...data,
+            editDescriptionProduct: string
+        }
+
+        // console.log((dataValidated));
+        // return
+
+        $.post('ajax/product.php', dataValidated, function(response) {
+            // console.log(JSON.parse(response));
+            // console.log(response);
+            
+            // return;
+            const resp = JSON.parse(response);
+            if(resp.res === 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: resp.msg,
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = 'product-list';
+                    }
+                })
+            }
+            
+            
+        })
+        
+    });
+}
+
 
 /**** Eliminar un producto ****/
 $(document).on('click', '#btnDeleteProduct', function (){

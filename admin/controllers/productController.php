@@ -36,6 +36,26 @@ class ProductController {
 
     }
 
+    static public function ctrUpdateProduct($table, $data){
+
+        if(isset($data['idProduct'])){
+
+            $response = ProductModel::mdlUpdateProduct($table, $data);
+
+            if($response === true){
+
+                $resp = 'success';
+                $msg = 'Producto editado correctamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            }
+
+        }
+    }
+
     static public function ctrDeleteProduct($table, $id){
 
         if(isset($id)){

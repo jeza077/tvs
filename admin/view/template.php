@@ -62,6 +62,7 @@
               $_GET["url"] == "new-category" ||
               $_GET["url"] == "edit-category" ||
               $_GET["url"] == "new-product" ||
+              $_GET["url"] == "edit-product" ||
               $_GET["url"] == "product-list" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
