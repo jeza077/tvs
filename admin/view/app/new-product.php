@@ -91,8 +91,8 @@
                   <div class="multisteps-form__content">
                     <div class="row mt-3">
                       <div class="col-12">
-                        <label class="form-control mb-0">Product images</label>
-                        <div action="/file-upload" class="form-control border dropzone dz-clickable" id="productImg"><div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button></div></div>
+                        <label class="form-control mb-0">Imagenes del producto</label>
+                        <div class="form-control border dropzone dz-clickable" name="productImg" id="productImg"><div class="dz-default dz-message"><button class="dz-button" type="button">Arrastre y suelte o haga clic aquí</button></div></div>
                       </div>
                     </div>
                     <div class="button-row d-flex mt-4">

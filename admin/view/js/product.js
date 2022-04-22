@@ -62,6 +62,38 @@ dataTableAjax('#tableProducts', 'ajax/datatables/datatable.product.php');
 // });
 
 
+Dropzone.autoDiscover = false;
+
+// $(".dropzone").dropzone({
+//     maxFiles: 2000,
+//     url: "/tvs/admin/new-product",
+//     success: function (file, response) {
+//         console.log(file);
+//         // console.log(response);
+//     }
+// });
+
+let arrayImages = [];
+let myDropzone = new Dropzone('.dropzone', {
+    url: "/tvs/admin/new-product",
+    maxFilesize: 2,
+    maxFiles: 4,
+    acceptedFiles:'image/jpeg, image/jpg, image/png',
+    addRemoveLinks: true,
+    dictRemoveFile: 'Remover'
+})
+
+myDropzone.on('addedfile', file => {
+    arrayImages.push(file);
+})
+
+myDropzone.on('removedfile', file => {
+    let i = arrayImages.indexOf(file);
+    arrayImages.splice(i, 1);
+})
+
+
+
 /**** Guardar un nuevo producto ****/
 const productForm = document.querySelector('form#productForm')
 if(productForm){
@@ -74,11 +106,16 @@ if(productForm){
         // Quitar salto de linea en string de descripcion del producto
         let saveDescription = data.descriptionProduct;
         saveDescription = saveDescription.replace(/(\r\n|\n|\r)/gm,"");
-        
+
+
         const saveDataValidated = {
             ...data,
-            descriptionProduct: saveDescription
+            descriptionProduct: saveDescription,
+            arrayImages
         }
+
+        console.log(saveDataValidated);
+        return;
 
         $.post('ajax/product.php', saveDataValidated, function(response) {
             console.log(JSON.parse(response));

@@ -131,6 +131,7 @@
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="assets/js/plugins/choices.min.js"></script>
+  <script src="assets/js/plugins/dropzone.min.js"></script>
   <script src="assets/js/plugins/quill.min.js"></script>
   <script src="assets/js/plugins/multistep-form.js"></script>
   <!-- <script src="assets/js/plugins/validation.js"></script> -->
