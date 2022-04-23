@@ -17,24 +17,89 @@ class ProductController {
 
         if(isset($data)){
 
+            // return $data;
+
             $response = ProductModel::mdlSaveProduct($table, $data);
 
             // return $response;
 
             if($response === true){
 
-                $resp = 'success';
-                $msg = 'Producto guardado correctamente.';
+                $totalId = array();
+                $item = null;
+                $valor = null;
 
-                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+                $totalProducts = ProductModel::mdlShowProducts($table, $item, $valor);
+                
+                foreach($totalProducts as $keyProduct => $valueProduct){
+                    array_push($totalId, $valueProduct['id_producto']);
+                }
 
-                return $response;
+                $idProduct = end($totalId);
+
+                return array(
+                    'res' => 'success',
+                    'id_product' => $idProduct,
+                    'nameProduct' => $data['nameProduct']
+                );
+
+                // $resp = 'success';
+                // $msg = 'Producto guardado correctamente.';
+
+                // $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                // return $response;
 
             }
 
         }
 
     }
+
+    static public function ctrSaveImgsProduct($data, $id_product, $nameProd){
+        if(isset($data)){
+            // return $data;
+
+            $dir = '../assets/img/products/'.$nameProd;
+
+            if(!file_exists($dir)){
+                // return 'nooo existe';
+                mkdir($dir, 0777, true);
+            } 
+
+            if(move_uploaded_file($data['tmp_name'], '../assets/img/products/'.$nameProd.'/'. $data['name'])){
+
+                $table = 'img_producto';
+                $url_img = 'assets/img/products/'.$nameProd.'/'. $data['name'];
+                
+                $response = ProductModel::mdlSaveImagesProduct($table, $id_product, $url_img);
+
+                if($response === true){
+
+                    $resp = 'success';
+                    $msg = 'Imagenes guardadas correctamente.';
+    
+                    $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                    return $response;
+
+                } else {
+
+                    $resp = 'error';
+                    $msg = 'Algo salio mal, intentalo nuevamente.';
+    
+                    $response = HelperController::ctrReturnResponseJson($resp, $msg);
+              
+                    return $response;
+                }
+
+
+            } else {
+                return false;
+            }
+        }
+    }
+
 
     static public function ctrUpdateProduct($table, $data){
 

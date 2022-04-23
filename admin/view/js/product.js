@@ -94,11 +94,14 @@ myDropzone.on('removedfile', file => {
 
 
 
+
+
 /**** Guardar un nuevo producto ****/
 const productForm = document.querySelector('form#productForm')
 if(productForm){
     productForm.addEventListener('submit', e => {
         e.preventDefault();
+        
         const data = Object.fromEntries(
             new FormData(e.target)
         );
@@ -107,36 +110,110 @@ if(productForm){
         let saveDescription = data.descriptionProduct;
         saveDescription = saveDescription.replace(/(\r\n|\n|\r)/gm,"");
 
-
         const saveDataValidated = {
             ...data,
             descriptionProduct: saveDescription,
-            arrayImages
         }
 
-        console.log(saveDataValidated);
-        return;
+        Swal.fire({
+            title: "Guardando...",
+            heightAuto: false,
+            showConfirmButton: false,
+            allowOutsideClick: false
+        })
+        Swal.showLoading();
+        // return;
 
-        $.post('ajax/product.php', saveDataValidated, function(response) {
-            console.log(JSON.parse(response));
-            console.log(response);
-            
-            // return;
-            const resp = JSON.parse(response);
-            if(resp.res === 'success') {
-                Swal.fire({
-                    icon: 'success',
-                    title: resp.msg,
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location = 'product-list';
-                    }
-                })
-            }
-            
-            
-        });
+        setTimeout(() => {
+
+            $.post('ajax/product.php', saveDataValidated, function(response) {
+                console.log(JSON.parse(response));
+                console.log(response);
+                
+                // return;
+                const {id_product, nameProduct} = JSON.parse(response);
+
+                if(response){
+
+                    Swal.fire({
+                        title: "Subiendo imagenes...",
+                        heightAuto: false,
+                        showConfirmButton: false,
+                        allowOutsideClick: false
+                    })
+                    Swal.showLoading();
+                    // return;
+                    
+                    setTimeout(() => {
+                        let imgStatus = 0;
+                        
+                        // Guardar imagenes del producto
+
+                        for(let i = 0; i < arrayImages.length; i++) {
+
+                            let imgData = new FormData();
+                            imgData.append('file', arrayImages[i]);
+                            imgData.append('id_product', id_product);
+                            imgData.append('nameP', nameProduct);
+
+                            //  console.log(imgData);
+                            //  return;
+                    
+                            fetch('ajax/product.php', {
+                                method: 'POST',
+                                body: imgData
+                            }).then(res => res.json())
+                                .then(data => {
+                                    console.log(data);
+                                    if(!data){
+                                        return;
+                                    }
+                                });
+
+                            imgStatus++;
+
+                        }
+
+
+                        if(imgStatus == arrayImages.length){
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Producto guardado correctamente.',
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location = 'product-list';
+                                }
+                            })
+
+                        } else {
+                            console.log('algo salio mal');
+                        }
+                    }, 2000);
+
+
+                } else {
+                    console.log('no guardado')
+                }
+                // return;
+                // const resp = JSON.parse(response);
+                // if(resp.res === 'success') {
+                //     Swal.fire({
+                //         icon: 'success',
+                //         title: resp.msg,
+                //         allowOutsideClick: false
+                //     }).then((result) => {
+                //         if (result.isConfirmed) {
+                //             window.location = 'product-list';
+                //         }
+                //     })
+                // }
+                
+                
+            });
+    
+        }, 2000);
 
     })
 }

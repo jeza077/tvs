@@ -52,7 +52,22 @@ class ProductModel {
 
         $stmt -> close();
 
-		$stmt = null;
+    }
+    
+    static public function mdlSaveImagesProduct($table, $idProduct, $url){
+
+        $stmt = Connection::connect()->prepare("INSERT INTO $table (id_producto, url_img) VALUES (:id_producto, :url_img)");
+
+        $stmt -> bindParam(":id_producto", $idProduct, PDO::PARAM_INT);
+        $stmt -> bindParam(":url_img", $url, PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return true;
+        } else {
+            return $stmt -> errorInfo();
+        }
+
+        $stmt -> close();
 
     }
 

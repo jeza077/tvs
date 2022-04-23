@@ -11,6 +11,10 @@ class AjaxProduct{
     public $descriptionProduct;
     public $priceProduct;
     public $categoryProduct;    
+    
+    public $arrayImgs;    
+    public $id_product;
+    public $nameP;
 
     public $idEditProduct;
 
@@ -35,14 +39,28 @@ class AjaxProduct{
             'nameProduct' => $this->nameProduct,
             'descriptionProduct' => $this->descriptionProduct,
             'priceProduct' => $this->priceProduct,
-            'categoryProduct' => $this->categoryProduct
+            'categoryProduct' => $this->categoryProduct,
+            // 'arrayImgs' => $this->arrayImgs
         );
         
+        // $img = $this->arrayImgs;
 
         $response = ProductController::ctrSaveProduct($table, $data);
 
         echo json_encode($response);
 
+        
+    }
+
+    public function ajaxImgs(){
+
+        $data = $this->arrayImgs;
+        $id_product = $this->id_product;
+        $nameProd = $this->nameP;
+
+        $response = ProductController::ctrSaveImgsProduct($data, $id_product, $nameProd);
+
+        echo json_encode($response);
     }
 
 
@@ -95,6 +113,16 @@ if(isset($_POST["nameProduct"])){
     $products->categoryProduct = $_POST["categoryProduct"];
     $products->ajaxSaveProduct();
 }
+
+// Guardar imagenes del producto
+if(isset($_FILES['file'])){
+    $file = new AjaxProduct();
+    $file->arrayImgs = $_FILES['file'];
+    $file->id_product = $_POST['id_product'];
+    $file->nameP = $_POST['nameP'];
+    $file->ajaxImgs();
+}
+
 
 // Editar Producto
 if(isset($_POST['idEditProduct'])){
