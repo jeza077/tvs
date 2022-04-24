@@ -26,6 +26,9 @@
   <!-- <link rel="stylesheet" href="assets/css/dataTables.bootstrap5.min.css"> -->
   <link rel="stylesheet" href="assets/datatables/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/datatables/css/responsive.bootstrap4.min.css">
+  <!-- Color Picker -->
+  <link rel="stylesheet" href="assets/color-picker/jquery.minicolors.css">
+
   <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.css"/> -->
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/backendtvs.min.css?v=3.0.3" rel="stylesheet" />
@@ -64,6 +67,8 @@
               $_GET["url"] == "new-product" ||
               $_GET["url"] == "edit-product" ||
               $_GET["url"] == "product-list" ||
+              $_GET["url"] == "color-list" ||
+              $_GET["url"] == "new-color" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 
@@ -143,9 +148,13 @@
   <!-- <script src="assets/js/plugins/dataTables.bootstrap5.min.js"></script> -->
   <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script> -->
   <script src="assets/datatables/js/jquery.dataTables.min.js"></script>
-<script src="assets/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets/datatables/js/dataTables.responsive.min.js"></script>
-<script src="assets/datatables/js/responsive.bootstrap4.min.js"></script>
+  <script src="assets/datatables/js/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/datatables/js/dataTables.responsive.min.js"></script>
+  <script src="assets/datatables/js/responsive.bootstrap4.min.js"></script>
+
+  <!-- Color Picker -->
+  <script src="assets/color-picker/jquery.minicolors.js"></script>
+
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 
@@ -168,6 +177,7 @@
   <script src="view/js/login.js"></script>
   <script src="view/js/category.js"></script>
   <script src="view/js/product.js"></script>
+  <script src="view/js/color.js"></script>
 </body>
 
 </html>

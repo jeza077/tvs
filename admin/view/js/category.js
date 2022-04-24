@@ -1,4 +1,4 @@
-
+// Mostrar Datatble categorias
 dataTableAjax('#tableCategory', 'ajax/datatables/datatable.category.php');
 
 

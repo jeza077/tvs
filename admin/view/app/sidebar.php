@@ -110,6 +110,29 @@
             </ul>
           </div>
         </li>
+
+        <li class="nav-item">
+          <a data-bs-toggle="collapse" href="#color" class="nav-link text-dark " aria-controls="color" role="button" aria-expanded="false">
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
+            <span class="nav-link-text ms-2 ps-1">Colores</span>
+          </a>
+          <div class="collapse " id="color">
+            <ul class="nav ">              
+              <li class="nav-item ">
+                <a class="nav-link text-dark " href="color-list">
+                  <span class="sidenav-mini-icon"> L </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Lista colores </span>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link text-dark " href="new-color">
+                  <span class="sidenav-mini-icon"> N </span>
+                  <span class="sidenav-normal  ms-2  ps-1"> Nuevo color </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
         
         <!-- <li class="nav-item">
           <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link text-dark " aria-controls="ecommerceExamples" role="button" aria-expanded="false">

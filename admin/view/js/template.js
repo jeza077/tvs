@@ -39,6 +39,7 @@ const dataTableAjax = (selector, archivoAjax) => {
     
 }
 
+
 // CHOICES
 if (document.getElementById('choices-category')) {
   var element = document.getElementById('choices-category');
