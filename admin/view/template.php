@@ -69,6 +69,7 @@
               $_GET["url"] == "product-list" ||
               $_GET["url"] == "color-list" ||
               $_GET["url"] == "new-color" ||
+              $_GET["url"] == "edit-color" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 

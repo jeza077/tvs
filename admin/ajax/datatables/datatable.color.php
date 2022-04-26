@@ -20,7 +20,7 @@ class ColorDatatable{
             "data": [';
             for($i = 0; $i < count($colors); $i++){
 
-                $buttons = "<button class='btn btn-warning btn-xs me-1' data-toggle='tooltip' data-original-title='Editar categoría' id='btnEditCategory' idColor='".$colors[$i]['id_color']."'>Editar</button><button class='btn btn-outline-danger btn-xs' data-toggle='tooltip' data-original-title='Eliminar categoría' id='btnDeleteCategory' idColor='".$colors[$i]['id_color']."'>Eliminar</button>";
+                $buttons = "<button class='btn btn-warning btn-xs me-1' data-toggle='tooltip' data-original-title='Editar categoría' id='btnEditColor' idColor='".$colors[$i]['id_color']."'>Editar</button><button class='btn btn-outline-danger btn-xs' data-toggle='tooltip' data-original-title='Eliminar categoría' id='btnDeleteColor' idColor='".$colors[$i]['id_color']."'>Eliminar</button>";
 
                 $key = "<div class='d-flex px-2 py-1'><div class='text-md font-weight-bold mb-0'>".($i+1)."</div></div>";
                 $color = "<div class='text-md font-weight-bold mb-0'>".$colors[$i]["colores"]."</div>";

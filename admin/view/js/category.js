@@ -130,9 +130,9 @@ $(document).on('click', '#btnEditCategory', function (){
 
     })
 })
-const formEditar = document.querySelector('form#editCategoryForm');
-if(formEditar){ 
-    formEditar.addEventListener('submit', e => {
+const formEditarCategory = document.querySelector('form#editCategoryForm');
+if(formEditarCategory){ 
+    formEditarCategory.addEventListener('submit', e => {
         e.preventDefault();
         
 

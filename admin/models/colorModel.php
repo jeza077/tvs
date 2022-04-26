@@ -47,4 +47,22 @@ class ColorModel {
         $stmt->close();
     }
 
+    static public function mdlUpdateColor($table, $data){
+
+        $stmt = Connection::connect()->prepare("UPDATE $table SET colores = :colores, hexadecimal = :hexadecimal WHERE id_color = :id_color");
+
+        $stmt->bindParam(":colores", $data['editNameColor'], PDO::PARAM_STR);
+        $stmt->bindParam(":hexadecimal", $data['editColorHex'], PDO::PARAM_STR);
+        $stmt->bindParam(":id_color", $data['editIdColor'], PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return true;
+        } else {
+            return $stmt -> errorInfo();
+        }
+
+        $stmt->close();
+
+    }
+
 }

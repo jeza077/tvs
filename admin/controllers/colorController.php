@@ -33,4 +33,34 @@ class ColorController {
 
     }
 
+    static public function ctrUpdateColor($table, $data){
+
+        if(isset($data)){
+
+            $response = ColorModel::mdlUpdateColor($table, $data);
+
+            if($response === true){
+
+                $resp = 'success';
+                $msg = 'Color editado correctamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            } else {
+                
+                $resp = 'error';
+                $msg = 'Algo salio mal, intenta nuevamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            }
+
+        }
+
+    }
+
 }
