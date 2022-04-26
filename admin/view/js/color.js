@@ -23,7 +23,7 @@ if(colorPicker){
         // console.log(data);
 
         $.post('ajax/color.php', data, function (response){
-            console.log(response);
+            // console.log(response);
 
             const resp = JSON.parse(response);
             if(resp.res === 'success') {
@@ -53,8 +53,8 @@ $(document).on('click', '#btnEditColor', function (){
     }
     
     $.post('ajax/color.php', data, function (response) {
-        console.log(JSON.parse(response));
-        console.log(response);
+        // console.log(JSON.parse(response));
+        // console.log(response);
 
         if(response){
             window.location = "index.php?url=edit-color&id="+idColor;
@@ -111,3 +111,65 @@ if(formEditarColor){
         
     });
 }
+
+/**** Eliminar categorias ****/
+$(document).on('click', '#btnDeleteColor', function (){
+    
+    const idColor = $(this).attr('idColor');
+    
+    Swal.fire({
+        title: '¿Está seguro de querer borrar el color?',
+        text: "Si no lo está, puede cancelar la acción.",
+        icon: 'warning',
+        showDenyButton: true,
+        // showCancelButton: true,
+        confirmButtonColor: '#43a047',
+        denyButtonColor: '#f44335',
+        confirmButtonText: '¡Sí, borrar!',
+        denyButtonText: 'Cancelar',
+      }).then(function(result){
+        if (result.isConfirmed) {
+
+            const data = {
+                idDeleteColor: idColor
+            }
+            // console.log(data)
+            // return;
+            $.post('ajax/color.php', data, function (response) {
+                // console.log(JSON.parse(response));
+                // console.log(response);
+
+                const resp = JSON.parse(response);
+                if(resp.res === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: resp.msg,
+                        confirmButtonColor: '#43a047',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'color-list';
+                        }
+                    });
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salio mal, intenta nuevamente.',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'color-list';
+                        }
+                    })
+                }
+           
+            })
+
+        } else if (result.isDenied) {
+            Swal.fire('Acción cancelada.', '', 'info')
+        }
+    });
+
+
+})

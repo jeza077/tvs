@@ -53,6 +53,17 @@ class AjaxColor {
 
     }
 
+    public function ajaxDeleteColor(){
+
+        $table = 'colores';
+        $id = $this->idColor;
+
+        $response = ColorController::ctrDeleteColor($table, $id);
+
+        echo json_encode($response);
+
+    }
+
 }
 
 
@@ -79,4 +90,11 @@ if(isset($_POST['editNameColor'])){
     $editColor->nameColor = $_POST['editNameColor'];
     $editColor->colorHex = $_POST['editColorHex'];
     $editColor->ajaxEditColor();
+}
+
+// Eliminar color
+if(isset($_POST['idDeleteColor'])){
+    $deleteColor = new AjaxColor();
+    $deleteColor->idColor = $_POST['idDeleteColor'];
+    $deleteColor->ajaxDeleteColor();
 }

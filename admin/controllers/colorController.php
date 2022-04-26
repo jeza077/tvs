@@ -27,6 +27,15 @@ class ColorController {
 
                 return $response;
 
+            } else {
+                
+                $resp = 'error';
+                $msg = 'Algo salio mal, intenta de nuevo.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
             }
 
         }
@@ -51,7 +60,37 @@ class ColorController {
             } else {
                 
                 $resp = 'error';
-                $msg = 'Algo salio mal, intenta nuevamente.';
+                $msg = 'Algo salio mal, intenta de nuevo.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            }
+
+        }
+
+    }
+
+    static public function ctrDeleteColor($table, $id){
+
+        if(isset($id)){
+
+            $response = ColorModel::mdlDeleteColor($table, $id);
+
+            if($response === true){
+
+                $resp = 'success';
+                $msg = 'Color eliminado correctamente.';
+
+                $response = HelperController::ctrReturnResponseJson($resp, $msg);
+
+                return $response;
+
+            } else {
+                
+                $resp = 'error';
+                $msg = 'Algo salio mal, intenta de nuevo.';
 
                 $response = HelperController::ctrReturnResponseJson($resp, $msg);
 

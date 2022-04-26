@@ -65,4 +65,20 @@ class ColorModel {
 
     }
 
+
+    static public function mdlDeleteColor($table, $id){
+
+        $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_color = :id_color");
+
+        $stmt-> bindParam(":id_color", $id, PDO::PARAM_INT);
+        
+        if($stmt->execute()){
+            return true;
+        } else {
+            return $stmt -> errorInfo();
+        }
+
+        $stmt->close();
+
+    }
 }
