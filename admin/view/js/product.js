@@ -62,6 +62,171 @@ dataTableAjax('#tableProducts', 'ajax/datatables/datatable.product.php');
 // });
 
 
+/**** Eliminar un producto ****/
+$(document).on('click', '#btnDeleteProduct', function (){
+    
+    const idProduct = $(this).attr('idProduct');
+
+    // console.log(idProduct);
+    // return;
+    
+    Swal.fire({
+        title: '¿Está seguro de querer borrar el producto?',
+        text: "Si no lo está, puede cancelar la acción.",
+        icon: 'warning',
+        showDenyButton: true,
+        // showCancelButton: true,
+        confirmButtonColor: '#43a047',
+        denyButtonColor: '#f44335',
+        confirmButtonText: '¡Sí, borrar!',
+        denyButtonText: 'Cancelar',
+      }).then(function(result){
+        if (result.isConfirmed) {
+
+            const data = {
+                idDeleteProduct: idProduct
+            }
+            // console.log(data)
+            // return;
+            $.post('ajax/product.php', data, function (response) {
+                // console.log(JSON.parse(response));
+                console.log(response);
+                // return;
+
+                const resp = JSON.parse(response);
+                if(resp.res === 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: resp.msg,
+                        confirmButtonColor: '#43a047',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'product-list';
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Algo salio mal, intenta nuevamente.',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'product-list';
+                        }
+                    })
+                }
+           
+            })
+
+        } else if (result.isDenied) {
+            Swal.fire('Acción cancelada.', '', 'info')
+        }
+    });
+
+
+})
+
+
+/**** Editar producto ****/
+// Dropzone.autoDiscover = false;
+
+// let arrayEditImages = [];
+// let myDropzoneEdit = new Dropzone('#editProductImg', {
+//     // url: "/tvs/admin/index.php?url=edit-product&id=98",
+//     url: "/tvs/admin/edit-product",
+//     maxFilesize: 2,
+//     maxFiles: 4,
+//     acceptedFiles:'image/jpeg, image/jpg, image/png',
+//     addRemoveLinks: true,
+//     dictRemoveFile: 'Remover'
+// })
+
+// myDropzoneEdit.on('addedfile', file => {
+//     arrayEditImages.push(file);
+// })
+
+// myDropzoneEdit.on('removedfile', file => {
+//     let i = arrayEditImages.indexOf(file);
+//     arrayEditImages.splice(i, 1);
+// })
+
+// console.log((arrayEditImages));
+
+
+$(document).on('click', '#btnEditProduct', function (){
+    // console.log('holaaa')  
+    // return;
+    const idProduct = $(this).attr('idProduct');
+    const data = {
+        idProduct: idProduct
+    }
+    
+    $.post('ajax/product.php', data, function (response) {
+        console.log(JSON.parse(response));
+        console.log(response);
+
+        if(response){
+            window.location = "index.php?url=edit-product&id="+idProduct;
+        } else {
+            console.log('no viene resp');
+        }
+
+    })
+})
+const formEditProduct = document.querySelector('form#editProductForm');
+if(formEditProduct){ 
+    formEditProduct.addEventListener('submit', e => {
+        e.preventDefault();
+        
+
+        const data = Object.fromEntries(
+            new FormData(e.target)
+        );
+
+        // Quitar salto de linea en string de descripcion del producto
+        let editDescription = data.editDescriptionProduct;
+        editDescription = editDescription.replace(/(\r\n|\n|\r)/gm,"");
+        
+        const dataValidated = {
+            ...data,
+            editDescriptionProduct: editDescription
+        }
+
+        // let images = $('.imgEdit img').attr('src');
+        // console.log(images);
+
+
+        console.log((dataValidated));
+        // console.log((arrayEditImages));
+        // return
+
+        $.post('ajax/product.php', dataValidated, function(response) {
+            // console.log(JSON.parse(response));
+            // console.log(response);
+            
+            // return;
+            const resp = JSON.parse(response);
+            if(resp.res === 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: resp.msg,
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = 'product-list';
+                    }
+                })
+            }
+            
+            
+        })
+        
+    });
+}
+
+
+
 Dropzone.autoDiscover = false;
 
 // $(".dropzone").dropzone({
@@ -93,15 +258,35 @@ myDropzone.on('removedfile', file => {
 })
 
 
-
-
-
 /**** Guardar un nuevo producto ****/
 const productForm = document.querySelector('form#productForm')
 if(productForm){
     productForm.addEventListener('submit', e => {
         e.preventDefault();
+        // console.log(arrayImages)
+        // let $select = $('#choices-tags');
+        // $select.on('change', () => {
+        // let selecteds = [];
+
+        // Buscamos los option seleccionados
+        // $select.children(':selected').each((idx, el) => {
+        //     // Obtenemos los atributos que necesitamos
+        //     selecteds.push({
+        //     // id: el.id,
+        //     value: el.value
+        //     });
+        //     console.log(el)
+        // });
         
+        //
+        // console.log(selecteds);
+    // });
+    // console.log($select.children(':selected'));
+
+        const idColors = [...$("#choices-tags :selected")].map(e => e.value);
+
+        // console.log(idColors);
+
         const data = Object.fromEntries(
             new FormData(e.target)
         );
@@ -113,7 +298,11 @@ if(productForm){
         const saveDataValidated = {
             ...data,
             descriptionProduct: saveDescription,
+            idColor: idColors
         }
+
+        // console.log(saveDataValidated);
+        // return;
 
         Swal.fire({
             title: "Guardando...",
@@ -127,10 +316,10 @@ if(productForm){
         setTimeout(() => {
 
             $.post('ajax/product.php', saveDataValidated, function(response) {
-                console.log(JSON.parse(response));
+                // console.log(JSON.parse(response));
                 console.log(response);
-                
                 // return;
+
                 const {id_product, nameProduct} = JSON.parse(response);
 
                 if(response){
@@ -219,133 +408,5 @@ if(productForm){
 }
 
 
-/**** Editar producto ****/
-$(document).on('click', '#btnEditProduct', function (){
-    // console.log('holaaa')  
-    const idProduct = $(this).attr('idProduct');
-    const data = {
-        idProduct: idProduct
-    }
-    
-    $.post('ajax/product.php', data, function (response) {
-        console.log(JSON.parse(response));
-        console.log(response);
-
-        if(response){
-            window.location = "index.php?url=edit-product&id="+idProduct;
-        } else {
-            console.log('no viene resp');
-        }
-
-    })
-})
-const formEditProduct = document.querySelector('form#editProductForm');
-if(formEditProduct){ 
-    formEditProduct.addEventListener('submit', e => {
-        e.preventDefault();
-        
-
-        const data = Object.fromEntries(
-            new FormData(e.target)
-        );
-
-        // Quitar salto de linea en string de descripcion del producto
-        let editDescription = data.editDescriptionProduct;
-        editDescription = editDescription.replace(/(\r\n|\n|\r)/gm,"");
-        
-        const dataValidated = {
-            ...data,
-            editDescriptionProduct: editDescription
-        }
-
-        // console.log((dataValidated));
-        // return
-
-        $.post('ajax/product.php', dataValidated, function(response) {
-            // console.log(JSON.parse(response));
-            // console.log(response);
-            
-            // return;
-            const resp = JSON.parse(response);
-            if(resp.res === 'success') {
-                Swal.fire({
-                    icon: 'success',
-                    title: resp.msg,
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location = 'product-list';
-                    }
-                })
-            }
-            
-            
-        })
-        
-    });
-}
 
 
-/**** Eliminar un producto ****/
-$(document).on('click', '#btnDeleteProduct', function (){
-    
-    const idProduct = $(this).attr('idProduct');
-
-    // console.log(idProduct);
-    // return;
-    
-    Swal.fire({
-        title: '¿Está seguro de querer borrar el producto?',
-        text: "Si no lo está, puede cancelar la acción.",
-        icon: 'warning',
-        showDenyButton: true,
-        // showCancelButton: true,
-        confirmButtonColor: '#43a047',
-        denyButtonColor: '#f44335',
-        confirmButtonText: '¡Sí, borrar!',
-        denyButtonText: 'Cancelar',
-      }).then(function(result){
-        if (result.isConfirmed) {
-
-            const data = {
-                idDeleteProduct: idProduct
-            }
-            // console.log(data)
-            // return;
-            $.post('ajax/product.php', data, function (response) {
-                console.log(JSON.parse(response));
-                console.log(response);
-
-                const resp = JSON.parse(response);
-                if(resp.res === 'success') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: resp.msg,
-                        confirmButtonColor: '#43a047',
-                        allowOutsideClick: false
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location = 'product-list';
-                        }
-                    })
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Algo salio mal, intenta nuevamente.',
-                        allowOutsideClick: false
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location = 'product-list';
-                        }
-                    })
-                }
-           
-            })
-
-        } else if (result.isDenied) {
-            Swal.fire('Acción cancelada.', '', 'info')
-        }
-    });
-
-
-})

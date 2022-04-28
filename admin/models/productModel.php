@@ -8,7 +8,7 @@ class ProductModel {
 
         if($item != null){
 
-            $stmt = Connection::connect()->prepare("SELECT p.*, p.descripcion_producto as descrip, c.* FROM $table AS p"
+            $stmt = Connection::connect()->prepare("SELECT p.*, c.* FROM $table AS p"
             . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
             . " WHERE $item = :$item");
 
@@ -22,8 +22,41 @@ class ProductModel {
 
         } else {
 
-            $stmt = Connection::connect()->prepare("SELECT p.*, p.descripcion_producto as descrip, c.* FROM $table AS p"
+            $stmt = Connection::connect()->prepare("SELECT p.*, c.* FROM $table AS p"
             . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria");
+            
+            $stmt -> execute();
+            return $stmt -> fetchAll();
+
+        }
+
+        $stmt -> close();
+        $stmt = null;
+
+    }
+
+    static public function mdlPruebaShowProducts($table, $item, $valor){
+
+        if($item != null){
+
+            $stmt = Connection::connect()->prepare("SELECT p.*, p.id_producto as id, c.*, ip.* FROM $table AS p"
+            . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
+            . " LEFT JOIN img_producto AS ip ON p.id_producto = ip.id_producto"
+            . " WHERE p.$item = :$item");
+
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt -> execute();
+            if($stmt->rowCount() > 0){
+                return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return $stmt -> errorInfo();
+            }
+
+        } else {
+
+            $stmt = Connection::connect()->prepare("SELECT p.*, p.id_producto as id, c.*, ip.* FROM $table AS p"
+            . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
+            . " LEFT JOIN img_producto AS ip ON p.id_producto = ip.id_producto");
             
             $stmt -> execute();
             return $stmt -> fetchAll();

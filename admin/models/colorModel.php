@@ -81,4 +81,38 @@ class ColorModel {
         $stmt->close();
 
     }
+
+    static public function mdlSaveColorProduct($table, $data){
+
+        $colors = $data['idColor'];
+
+        while (true) {
+            $fin = false;
+
+            $color = current($colors);
+            
+            $stmt = Connection::connect()->prepare("INSERT INTO $table (id_producto, id_color) VALUES (:id_producto, :id_color)");
+            
+            $stmt->bindParam(":id_producto", $data['idProduct'], PDO::PARAM_INT);
+            $stmt->bindParam(":id_color", $color, PDO::PARAM_INT);
+            
+            $stmt->execute();
+
+            $color = next($colors);
+			
+
+			if($color === false){
+				$fin = true;
+				break;
+			}
+        }
+
+        if($fin == true){
+            return true;
+        } else {
+            return false;
+        }
+
+        $stmt->close();
+    }
 }

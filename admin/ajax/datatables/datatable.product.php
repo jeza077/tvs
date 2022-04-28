@@ -26,20 +26,22 @@ class ProductDatatable{
                 $key = "<div class='d-flex px-2 py-1'><div class='text-md font-weight-bold mb-0'>".($i+1)."</div></div>";
                 $product = "<div class='text-md font-weight-bold mb-0'>".$products[$i]["nombre_producto"]."</div>";
                 $category = "<div class='text-md font-weight-bold mb-0'>".$products[$i]["categorias"]."</div>";
+                $price = "<div class='text-md font-weight-bold mb-0'>".$products[$i]["precio"]."</div>";
                 $description = "<div class='text-md font-weight-bold mb-0'>".$products[$i]["descripcion_producto"]."</div>";
                 // $description = "<div class='text-md font-weight-bold mb-0'>Apache</div>";
-                $price = "<div class='text-md font-weight-bold mb-0'>".$products[$i]["precio"]."</div>";
 
                 $dataJson .='[
                         "'.$key.'",
                         "'.$product.'",
                         "'.$category.'",
-                        "'.$description.'",
                         "'.$price.'",
                         "'.$buttons.'"
                     ],';
 
             }
+
+            
+
 
             $dataJson = substr($dataJson, 0, -1);
             

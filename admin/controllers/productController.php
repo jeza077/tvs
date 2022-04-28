@@ -1,8 +1,88 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/tvs/admin/controllers/helperController.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/tvs/admin/models/colorModel.php';
 
 class ProductController {
+
+
+    
+    static public function ctrPruebaShowProducts($table, $item, $valor) {
+
+        $products = ProductModel::mdlPruebaShowProducts($table, $item, $valor);
+        return $products;
+
+        $prod = [];
+
+        $idProduct = 0;
+        foreach ($products as $key => $product){
+            if($idProduct != $product['id']){
+                echo $product['id'];
+
+                $idProduct = $product['id'];
+            }
+
+        
+        }
+        return $prod;
+
+        // while($result = $products){
+        //     if($idProduct != $result['id']){
+        //         echo $result['id'];
+
+        //         $idProduct = $result['id'];
+        //     }
+
+        //     echo $result['url_img'];
+
+        // }
+
+        return $products;
+
+        $prod = array();
+        $idProduct = array();
+        foreach($products as $key => $product) {
+            $idProduct['lala'] = $product['id'];
+            $nameProduct = $product['nombre_producto'];
+            $category = $product['categorias'];
+            $price = $product['precio'];
+            $descriptionProduct = $product['descripcion_producto'];
+            $imgProducts = $product['url_img'];
+
+            // $imgProducts = array(
+            //     'img'.($key+1) => $product['url_img']
+            // );
+
+            // $prod[$idProduct][$nameProduct][$category][$price][$descriptionProduct][] = $imgProducts;
+
+            // $prod[] = $imgProducts;
+            // $prod['id'] = $idProduct;
+            // $prod += ['name' => $nameProduct];
+            // $prod += ['category' => $category];
+            // $prod += ['price' => $price];
+            // $prod += ['description' => $descriptionProduct];
+            // $prod += ['img' => $imgProducts];
+
+            // $prod = array(
+            //     'id' => $idProduct,
+            //     'name' => $nameProduct,
+            //     'category' => $category,
+            //     'price' => $price,
+            //     'description' => $descriptionProduct,
+            //     'img' => $imgProducts
+            // );
+
+            // array_push($prod, $idProduct);
+            
+            // echo $idProduct;
+            
+        }
+
+        return $idProduct;
+
+    }
+
+    // --------------------------------------------------------------------------
 
     static public function ctrShowProducts($table, $item, $valor) {
 
@@ -18,6 +98,7 @@ class ProductController {
         if(isset($data)){
 
             // return $data;
+            $idColors = $data['idColors'];
 
             $response = ProductModel::mdlSaveProduct($table, $data);
 
@@ -37,11 +118,24 @@ class ProductController {
 
                 $idProduct = end($totalId);
 
-                return array(
-                    'res' => 'success',
-                    'id_product' => $idProduct,
-                    'nameProduct' => $data['nameProduct']
+                $dataColors = array(
+                    'idProduct' => $idProduct,
+                    'idColor' => $idColors
                 );
+
+                $table = 'colores_producto';
+                $colors = ColorModel::mdlSaveColorProduct($table, $dataColors);
+
+                if($colors === true){
+
+                    return array(
+                        'res' => 'success',
+                        'id_product' => $idProduct,
+                        'nameProduct' => $data['nameProduct']
+                    );
+
+                }
+
 
                 // $resp = 'success';
                 // $msg = 'Producto guardado correctamente.';

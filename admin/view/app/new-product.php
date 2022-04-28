@@ -6,6 +6,12 @@
     $category = CategoryController::ctrShowCategories($table, $item, $valor);
 
     // var_dump($category);
+    // $table = 'colores';
+    // $item = null;
+    // $valor = null;
+    // $colors = ColorController::ctrShowColors($table, $item, $valor);
+
+    // var_dump($colors);
 ?>
 
 <div class="container-fluid py-4">
@@ -56,8 +62,8 @@
                         </select>             
                         </div>
                     </div>
-                    <!-- <div class="row"> -->
-                    <div class="col-12">
+                    <div class="row">
+                    <div class="col-7">
                         <!-- <label class="mt-4">Descripción</label>
                         <input type="text" name="descriptionProduct"> -->
 
@@ -79,7 +85,30 @@
                             <!-- </div> -->
                         <!-- </div> -->
                         </div>
-                    <!-- </div> -->
+
+                        <div class="col-5">
+                        <label class="mt-4 form-label">Color</label>
+                        <select class="form-control" id="choices-tags" multiple>
+                        <?php
+
+                            $table = 'colores';
+                            $item = null;
+                            $valor = null;
+                            $colors = ColorController::ctrShowColors($table, $item, $valor);
+
+                            // var_dump($colors);
+
+                            foreach ($colors as $key => $value) {   
+
+                                echo '<option value="'.$value["id_color"].'">'.$value["colores"].'</option>';
+                                
+                            }
+                        ?>
+                      
+                        </select>
+                        </div>
+                    
+                    </div>
                     <div class="button-row d-flex mt-4">
                         <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" id="nextProduct" title="Next">Next</button>
                     </div>
@@ -162,17 +191,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                        <label class="mt-4 form-label">Tags</label>
-                        <select class="form-control" name="choices-tags" id="choices-tags" multiple>
-                            <option value="Choice 1" selected>In Stock</option>
-                            <option value="Choice 2">Out of Stock</option>
-                            <option value="Choice 3">Sale</option>
-                            <option value="Choice 4">Black Friday</option>
-                            </select>
-                                                </div>
-                    </div>
+
                     <div class="button-row d-flex mt-0 mt-md-4">
                         <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
                         <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">Send</button>

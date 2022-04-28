@@ -11,6 +11,7 @@ class AjaxProduct{
     public $descriptionProduct;
     public $priceProduct;
     public $categoryProduct;    
+    public $idColors;    
     
     public $arrayImgs;    
     public $id_product;
@@ -40,6 +41,7 @@ class AjaxProduct{
             'descriptionProduct' => $this->descriptionProduct,
             'priceProduct' => $this->priceProduct,
             'categoryProduct' => $this->categoryProduct,
+            'idColors' => $this->idColors,
             // 'arrayImgs' => $this->arrayImgs
         );
         
@@ -111,6 +113,7 @@ if(isset($_POST["nameProduct"])){
     $products->descriptionProduct = $_POST["descriptionProduct"];
     $products->priceProduct = $_POST["priceProduct"];
     $products->categoryProduct = $_POST["categoryProduct"];
+    $products->idColors = $_POST["idColor"];
     $products->ajaxSaveProduct();
 }
 

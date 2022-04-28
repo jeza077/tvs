@@ -69,16 +69,7 @@ if (document.getElementById('choices-tags')) {
   });
 
   examples.setChoices(
-    [{
-        value: 'One',
-        label: 'Expired',
-        disabled: true
-      },
-      {
-        value: 'Two',
-        label: 'Out of Stock',
-        selected: true
-      }
+    [
     ],
     'value',
     'label',
