@@ -39,7 +39,7 @@
         </li>
         <hr class="horizontal light mt-0">
         <li class="nav-item">
-          <a href="dashboard" class="nav-link text-white active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <a href="dashboard" class="nav-link text-dark menu-lateral" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
             <i class="material-icons-round opacity-10">dashboard</i>
             <span class="nav-link-text ms-2 ps-1">Dashboard</span>
           </a>          
@@ -49,7 +49,7 @@
         </li>
   
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#category" class="nav-link text-dark " aria-controls="category" role="button" aria-expanded="false">
+          <a data-bs-toggle="collapse" href="#category" class="nav-link text-dark menu-lateral" aria-controls="category" role="button" aria-expanded="false">
             <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
             <span class="nav-link-text ms-2 ps-1">Categorias</span>
           </a>
@@ -72,7 +72,7 @@
         </li>
 
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#client" class="nav-link text-dark " aria-controls="client" role="button" aria-expanded="false">
+          <a data-bs-toggle="collapse" href="#client" class="nav-link text-dark menu-lateral" aria-controls="client" role="button" aria-expanded="false">
             <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
             <span class="nav-link-text ms-2 ps-1">Clientes</span>
           </a>
@@ -89,7 +89,7 @@
         </li>
 
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#product" class="nav-link text-dark " aria-controls="product" role="button" aria-expanded="false">
+          <a data-bs-toggle="collapse" href="#product" class="nav-link text-dark menu-lateral" aria-controls="product" role="button" aria-expanded="false">
             <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">shopping_basket</i>
             <span class="nav-link-text ms-2 ps-1">Productos</span>
           </a>
@@ -112,7 +112,7 @@
         </li>
 
         <li class="nav-item">
-          <a data-bs-toggle="collapse" href="#color" class="nav-link text-dark " aria-controls="color" role="button" aria-expanded="false">
+          <a data-bs-toggle="collapse" href="#color" class="nav-link text-dark menu-lateral" aria-controls="color" role="button" aria-expanded="false">
             <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
             <span class="nav-link-text ms-2 ps-1">Colores</span>
           </a>
