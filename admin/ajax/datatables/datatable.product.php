@@ -16,7 +16,7 @@ class ProductDatatable{
         // return;
 
         // $buttons = "<button class='btn btn-warning btn-xs me-1' data-toggle='tooltip' data-original-title='Editar categoría'>Editar</button><button class='btn btn-outline-danger btn-xs' data-toggle='tooltip' data-original-title='Eliminar categoría'>Eliminar</button>";
-        $imagen = "<img src='assets/img/products/Apache 200/apache-200-4.jpg' style='border-radius: 5px;' width='50px'>";
+        $imagen = "<img src='assets/img/products/Raider 125/raider-125-1.jpg' style='border-radius: 5px;' width='50px'>";
         $dataJson = '{
             "data": [';
             for($i = 0; $i < count($products); $i++){
