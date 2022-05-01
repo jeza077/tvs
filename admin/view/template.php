@@ -32,6 +32,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.css"/> -->
   <!-- CSS Files -->
   <link id="pagestyle" href="assets/css/backendtvs.min.css?v=3.0.3" rel="stylesheet" />
+  <link id="pagestyle" href="assets/css/main.css" rel="stylesheet" />
   <style>
       .sidenav[data-color=info] .navbar-nav>.nav-item .nav-link.active+.collapse .nav-item.active .nav-link.active, .sidenav[data-color=info] .navbar-nav>.nav-item .nav-link.active+.collapsing .nav-item.active .nav-link.active {
             background-image: linear-gradient(195deg,#1a73e8,#1a73e8)!important;
@@ -70,6 +71,7 @@
               $_GET["url"] == "color-list" ||
               $_GET["url"] == "new-color" ||
               $_GET["url"] == "edit-color" ||
+              $_GET["url"] == "profile" ||
               $_GET["url"] == "logout" ||
               $_GET["url"] == "tvs"){
                 
@@ -140,7 +142,10 @@
   <script src="assets/js/plugins/dropzone.min.js"></script>
   <script src="assets/js/plugins/quill.min.js"></script>
   <script src="assets/js/plugins/multistep-form.js"></script>
-  <!-- <script src="assets/js/plugins/validation.js"></script> -->
+  <script src="assets/js/plugins/material-wizard.js"></script>
+  <script src="assets/js/plugins/validation.js"></script>
+  <script src="assets/js/plugins/wow.min.js"></script>
+  <script src="assets/js/plugins/masked-input.js"></script>
 
   <!-- Kanban scripts -->
   <script src="assets/js/plugins/dragula/dragula.min.js"></script>
@@ -176,9 +181,46 @@
   <script src="assets/js/backendtvs.min.js?v=3.0.3"></script>
   <script src="view/js/template.js"></script>
   <script src="view/js/login.js"></script>
+  <script src="view/js/profile.js"></script>
   <script src="view/js/category.js"></script>
   <script src="view/js/product.js"></script>
   <script src="view/js/color.js"></script>
+
+  <!-- <script>  new WOW().init();</script> -->
+  <script>
+    // let nombreProducto =$('input:text[name=nameProduct]').val();
+    // if(nombreProducto.length > 1){
+    //   alert();
+    // } else {
+      // $('.multisteps-form__progress-btn, #nextProduct').click(function () {
+      //   if($('input:text[name=nameProduct]').val().length > 0 && $('input:text[name=categoryProduct]').val().length > 0 && $('input:text[name=descriptionProduct]').val().length > 0 && $('#choices-tags').val().length > 0){ 
+      //     alert()
+      //   } else {
+
+      //     return false;
+      //   }
+
+      // });
+    // }
+
+    // wow = new WOW(
+    //   {
+    //     animateClass: 'animated',
+    //     offset: 100,
+    //     callback: function (box) {
+    //       console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+    //     }
+    //   }
+    // );
+    // wow.init();
+    // document.getElementById('moar').onclick = function () {
+    //   var section = document.createElement('section');
+    //   section.className = 'section--purple wow fadeInDown';
+    //   this.parentNode.insertBefore(section, this);
+    // };
+
+
+  </script>
 </body>
 
 </html>

@@ -58,4 +58,24 @@ class UserModel {
 
     }
 
+    static public function mdlUpdateProfileUser($table, $data){
+
+        $stmt = Connection::connect()->prepare("UPDATE $table SET email = :email, password = :password WHERE id_usuario = :id_usuario");
+        
+        $stmt->bindParam(":email", $data['profileEmail'], PDO::PARAM_STR);
+        $stmt->bindParam(":password", $data['profilePassword'], PDO::PARAM_STR);
+        $stmt->bindParam(":id_usuario", $data['idUserProfile'], PDO::PARAM_INT);
+        
+        if($stmt->execute()){
+
+            return true;	
+
+        }else{
+
+            return $stmt -> errorInfo();
+        
+        }
+
+    }
+
 }

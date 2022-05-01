@@ -264,6 +264,7 @@ if(productForm){
     productForm.addEventListener('submit', e => {
         e.preventDefault();
         // console.log(arrayImages)
+        // return;
         // let $select = $('#choices-tags');
         // $select.on('change', () => {
         // let selecteds = [];

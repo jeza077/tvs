@@ -17,7 +17,7 @@
           <div class="collapse" id="ProfileNav" style="">
             <ul class="nav ">
               <li class="nav-item">
-                <a class="nav-link text-dark" href="">
+                <a class="nav-link text-dark" href="profile">
                   <span class="sidenav-mini-icon"> MP </span>
                   <span class="sidenav-normal  ms-3  ps-1"> Mi perfil </span>
                 </a>

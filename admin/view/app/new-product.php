@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form class="multisteps-form__form" style="height: 276px;" id="productForm">
+            <form class="multisteps-form__form" style="height: 276px;" name="form1" id="productForm" enctype="multipart/form-data">
                 <!--single form panel-->
                 <div class="multisteps-form__panel pt-3 border-radius-xl bg-white js-active" id="dataProduct" data-animation="FadeIn">
                     <h5 class="font-weight-bolder">Información del producto</h5>
@@ -41,12 +41,12 @@
                         <div class="col-12 col-sm-6">
                         <div class="input-group input-group-dynamic">
                             <label for="exampleFormControlInput1" class="form-label">Nombre producto</label>
-                            <input class="multisteps-form__input form-control" type="text" name="nameProduct" onfocus="focused(this)" onfocusout="defocused(this)">
+                            <input class="multisteps-form__input form-control" type="text" id="nameProduct" name="nameProduct" onfocus="focused(this)" onfocusout="defocused(this)" required>
                         </div>
                         </div>
                         <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                         <!-- <label class="form-control ms-0">Category</label> -->
-                        <select class="form-control" name="categoryProduct" id="choices-category" placeholder="Departure">
+                        <select class="form-control" name="categoryProduct" id="choices-category" placeholder="Departure" required>
                             <?php    
                               foreach ($category as $key => $value) {
 
@@ -74,7 +74,7 @@
                         <!-- <input type="text" name="descriptionProduct"> -->
 
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" name="descriptionProduct" style="border:1px solid #d2d6da"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" name="descriptionProduct" style="border:1px solid #d2d6da" required></textarea>
                         </div>
 
                         </textarea>
@@ -89,6 +89,7 @@
                         <div class="col-5">
                         <label class="mt-4 form-label">Color</label>
                         <select class="form-control" id="choices-tags" multiple>
+                            
                         <?php
 
                             $table = 'colores';
@@ -126,7 +127,7 @@
                     </div>
                     <div class="button-row d-flex mt-4">
                       <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
+                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="next2" type="button" title="Next">Next</button>
                     </div>
                   </div>
                 </div>
@@ -170,7 +171,7 @@
                         <div class="col-3">
                         <div class="input-group input-group-dynamic">
                             <label class="form-label">Price</label>
-                            <input type="text" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" onfocus="focused(this)" name="priceProduct" onfocusout="defocused(this)">
+                            <input type="text" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" onfocus="focused(this)" name="priceProduct" onfocusout="defocused(this)" required>
                         </div>
                         </div>
                         <div class="col-4">
@@ -187,7 +188,7 @@
                         <div class="col-5">
                         <div class="input-group input-group-dynamic">
                             <label class="form-label">SKU</label>
-                            <input class="multisteps-form__input form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
+                            <input class="multisteps-form__input form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)" required>
                         </div>
                         </div>
                     </div>

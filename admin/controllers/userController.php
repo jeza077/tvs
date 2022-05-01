@@ -28,7 +28,7 @@ class UserController {
                 $valor = $data['email'];
     
                 $response = UserController::ctrShowUsers($table, $item, $valor);
-                // return $response;
+                // return $response['password'];
 
                 if($response[0] == '0'){
                     return array(
@@ -118,6 +118,61 @@ class UserController {
         $response = UserModel::mdlUpdateGlobal($table, $item1, $valor1, $item2, $valor2, $item3, $valor3);
 
         return $response;
+
+    }
+
+    
+    static public function ctrUpdateProfileUser($table, $data){
+
+        if(isset($data['profileEmail'])){
+
+            if(preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/', $data['profileEmail'])){
+
+                if($data['profilePassword'] != ''){
+                    $password = crypt($data['profilePassword'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                    // return $password;
+                } else {
+                    $item = 'id_usuario';
+                    $valor = $data['idUserProfile'];
+        
+                    $response = UserController::ctrShowUsers($table, $item, $valor);
+                    $password = $response['password'];
+                }
+
+                // return $password;
+    
+                // $item = 'id_usuario';
+                // $valor = $data['idUserProfile'];
+                $data = array(
+                    'idUserProfile' => $data['idUserProfile'],
+                    'profileEmail' => $data['profileEmail'],
+                    'profilePassword' => $password
+                );
+    
+                $response = UserModel::mdlUpdateProfileUser($table, $data);
+
+                if($response == true){
+
+                    return array(
+                        'res' => 'success',
+                        'msg' => 'Datos modificados correctamente.'
+                    );
+                } else {
+                    return array(
+                        'res' => 'error',
+                        'msg' => 'Algo salio mal, intenta nuevamente.'
+                    );
+                }
+
+   
+            } else {
+                return array(
+                    'res' => 'error',
+                    'msg' => 'email no valido'
+                );
+            }
+
+        }
 
     }
 
