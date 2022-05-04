@@ -48,3 +48,10 @@
 .formulario__mensaje-error-activo#formulario__mensaje-error {
 	display: block;
 }
+
+
+.color-frame {
+	width: 20px!important;
+    height: 20px!important;
+    margin: 3px 0 0 70px!important;
+}
