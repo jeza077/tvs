@@ -10,7 +10,7 @@ class ProductModel {
 
             $stmt = Connection::connect()->prepare("SELECT p.*, c.* FROM $table AS p"
             . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
-            . " WHERE $item = :$item");
+            . " WHERE $item = :$item AND estado = 1");
 
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
             $stmt -> execute();
@@ -23,7 +23,8 @@ class ProductModel {
         } else {
 
             $stmt = Connection::connect()->prepare("SELECT p.*, c.* FROM $table AS p"
-            . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria");
+            . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
+            . " WHERE estado = 1");
             
             $stmt -> execute();
             return $stmt -> fetchAll();
@@ -125,11 +126,16 @@ class ProductModel {
 		$stmt = null;
     }
 
-    static public function mdlDeleteProduct($table, $id){
+    static public function mdlDeleteProduct($table, $data){
 
-		$stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_producto = :id_producto");
+		// $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_producto = :id_producto");
 
-		$stmt -> bindParam(":id_producto", $id, PDO::PARAM_INT);
+		// $stmt -> bindParam(":id_producto", $id, PDO::PARAM_INT);
+
+        $stmt = Connection::connect()->prepare("UPDATE $table SET estado = :estado WHERE id_producto = :id_producto");
+
+        $stmt -> bindParam(":estado", $data['status'], PDO::PARAM_INT);
+        $stmt -> bindParam(":id_producto", $data['id'], PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 			return true;

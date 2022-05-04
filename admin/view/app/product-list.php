@@ -3,7 +3,17 @@
         <!-- ENTER CODE HERE -->
         <div class="col-lg-12 position-relative z-index-2">
 
-            <h2 id="examples">Productos</h2>
+
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <h2 id="examples">Productos</h2>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <a href="new-product" class="btn btn-primary float-end me-4" id="editProfile">
+                        Agregar nuevo
+                    </a>
+                </div>
+            </div>
 
             <?php 
                 

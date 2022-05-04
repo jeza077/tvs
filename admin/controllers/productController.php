@@ -219,7 +219,12 @@ class ProductController {
 
         if(isset($id)){
 
-            $response = ProductModel::mdlDeleteProduct($table, $id);
+            $data = array(
+                'id' => $id,
+                'status' => 0
+            );
+
+            $response = ProductModel::mdlDeleteProduct($table, $data);
 
             if($response === true){
 

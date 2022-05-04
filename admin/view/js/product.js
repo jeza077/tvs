@@ -163,8 +163,8 @@ $(document).on('click', '#btnEditProduct', function (){
     }
     
     $.post('ajax/product.php', data, function (response) {
-        console.log(JSON.parse(response));
-        console.log(response);
+        // console.log(JSON.parse(response));
+        // console.log(response);
 
         if(response){
             window.location = "index.php?url=edit-product&id="+idProduct;
@@ -318,7 +318,7 @@ if(productForm){
 
             $.post('ajax/product.php', saveDataValidated, function(response) {
                 // console.log(JSON.parse(response));
-                console.log(response);
+                // console.log(response);
                 // return;
 
                 const {id_product, nameProduct} = JSON.parse(response);
@@ -354,7 +354,7 @@ if(productForm){
                                 body: imgData
                             }).then(res => res.json())
                                 .then(data => {
-                                    console.log(data);
+                                    // console.log(data);
                                     if(!data){
                                         return;
                                     }
