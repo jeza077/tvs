@@ -1,3 +1,50 @@
 .form-control:disabled, .form-control[readonly]{
     background-color: #f0f2f5!important;
 }
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+.formulario__input-error-email, .formulario__input-error-password, .formulario__input-error-password2  {
+	color: #bb2929;
+	font-size: 13px;
+	font-weight: 500;
+	margin-bottom: 0;
+	display: none;
+}
+
+.formulario__input-error-activo {
+	display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d!important;
+	opacity: 1!important;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929!important;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929!important;
+	opacity: 1!important;
+}
+
+.input-group.input-group-dynamic.formulario__grupo-incorrecto .form-control.formulario__input:focus{
+    background-image: linear-gradient(0deg,#bb2929 2px,rgba(156,39,176,0) 0),linear-gradient(0deg,#d2d2d2 1px,hsla(0,0%,82%,0) 0);
+}
+
+#formulario__mensaje-error{
+	display: none;
+}
+
+.formulario__mensaje-error-activo#formulario__mensaje-error {
+	display: block;
+}
