@@ -197,7 +197,7 @@ if(formEditProduct){
         // console.log(images);
 
 
-        console.log((dataValidated));
+        // console.log((dataValidated));
         // console.log((arrayEditImages));
         // return
 

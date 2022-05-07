@@ -108,10 +108,11 @@ class ProductModel {
 
     static public function mdlUpdateProduct($table, $data){
         
-        $stmt = Connection::connect()->prepare("UPDATE $table SET nombre_producto = :nombre_producto, descripcion_producto = :descripcion_producto, precio = :precio, id_categoria = :id_categoria WHERE id_producto = :id_producto");
+        $stmt = Connection::connect()->prepare("UPDATE $table SET nombre_producto = :nombre_producto, descripcion_producto = :descripcion_producto, sku = :sku, precio = :precio, id_categoria = :id_categoria WHERE id_producto = :id_producto");
 
         $stmt -> bindParam(":nombre_producto", $data['nameProduct'], PDO::PARAM_STR);
         $stmt -> bindParam(":descripcion_producto", $data['descriptionProduct'], PDO::PARAM_STR);
+        $stmt -> bindParam(":sku", $data['skuProduct'], PDO::PARAM_STR);
         $stmt -> bindParam(":precio", $data['priceProduct'], PDO::PARAM_STR);
         $stmt -> bindParam(":id_categoria", $data['categoryProduct'], PDO::PARAM_STR);
         $stmt -> bindParam(":id_producto", $data['idProduct'], PDO::PARAM_INT);

@@ -71,6 +71,7 @@ class AjaxProduct{
         $data = array(
             'nameProduct' => $this->nameProduct,
             'descriptionProduct' => $this->descriptionProduct,
+            'skuProduct' => $this->skuProduct,
             'priceProduct' => $this->priceProduct,
             'categoryProduct' => $this->categoryProduct,
             'idProduct' => $this->idEditProduct
@@ -133,6 +134,7 @@ if(isset($_POST['idEditProduct'])){
     $editProduct->idEditProduct = $_POST['idEditProduct'];
     $editProduct->nameProduct = $_POST["editNameProduct"];
     $editProduct->descriptionProduct = $_POST["editDescriptionProduct"];
+    $editProduct->skuProduct = $_POST["editSkuProduct"];
     $editProduct->priceProduct = $_POST["editPriceProduct"];
     $editProduct->categoryProduct = $_POST["editCategoryProduct"];
     $editProduct->ajaxUpdateProduct();
