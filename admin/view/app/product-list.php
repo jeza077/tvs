@@ -95,6 +95,7 @@
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="8%">Img</th>
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="8%">Producto</th>
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="20%">Categoría</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="20%">Sku</th>
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="20%">Precio</th>
                             <!-- <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="15%">Descripción</th> -->
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2" width="15%">Acciones</th>

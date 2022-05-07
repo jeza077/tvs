@@ -74,7 +74,7 @@
                         <!-- <input type="text" name="descriptionProduct"> -->
 
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" name="descriptionProduct" style="border:1px solid #d2d6da" required></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" name="descriptionProduct" id="descriptionProduct" style="border:1px solid #d2d6da" required></textarea>
                         </div>
 
                         </textarea>
@@ -127,54 +127,22 @@
                     </div>
                     <div class="button-row d-flex mt-4">
                       <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="next2" type="button" title="Next">Next</button>
+                      <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="nextImg" type="button" title="Next">Next</button>
                     </div>
                   </div>
                 </div>
-                <!--single form panel-->
-                <!-- <div class="multisteps-form__panel pt-3 border-radius-xl bg-white" data-animation="FadeIn">
-                    <h5 class="font-weight-bolder">Socials</h5>
-                    <div class="multisteps-form__content">
-                    <div class="row mt-3">
-                        <div class="col-12">
-                        <div class="input-group input-group-dynamic">
-                            <label class="form-label">Shoppify Handle</label>
-                            <input class="multisteps-form__input form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                        </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                        <div class="input-group input-group-dynamic">
-                            <label class="form-label">Facebook Account</label>
-                            <input class="multisteps-form__input form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                        </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                        <div class="input-group input-group-dynamic">
-                            <label class="form-label">Instagram Account</label>
-                            <input class="multisteps-form__input form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)">
-                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="button-row d-flex mt-4 col-12">
-                        <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Prev">Prev</button>
-                        <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button" title="Next">Next</button>
-                        </div>
-                    </div>
-                    </div>
-                </div> -->
-                <!--single form panel-->
+               
                 <div class="multisteps-form__panel pt-3 border-radius-xl bg-white h-100 " data-animation="FadeIn">
-                    <h5 class="font-weight-bolder">Pricing</h5>
+                    <h5 class="font-weight-bolder">Precio</h5>
                     <div class="multisteps-form__content mt-3">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-6">
                         <div class="input-group input-group-dynamic">
-                            <label class="form-label">Price</label>
+                            <label class="form-label">Precio</label>
                             <input type="text" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" onfocus="focused(this)" name="priceProduct" onfocusout="defocused(this)" required>
                         </div>
                         </div>
-                        <div class="col-4">
+                        <!-- <div class="col-4">
                         <select class="form-control" id="choices-currency">
                             <option value="Choice 1" selected="">LPS</option>
                             <option value="Choice 2">EUR</option>
@@ -184,11 +152,11 @@
                             <option value="Choice 6">BTC</option>
                             </select>
                         
-                        </div>
-                        <div class="col-5">
+                        </div> -->
+                        <div class="col-6">
                         <div class="input-group input-group-dynamic">
                             <label class="form-label">SKU</label>
-                            <input class="multisteps-form__input form-control" type="text" onfocus="focused(this)" onfocusout="defocused(this)" required>
+                            <input class="multisteps-form__input form-control" type="text" name="skuProduct" onfocus="focused(this)" onfocusout="defocused(this)">
                         </div>
                         </div>
                     </div>
@@ -200,6 +168,7 @@
                     </div>
                 </div>
             </form>
+            <div class="alert alert-warning text-white text-center mt-4" id="messageErrorNewProduct"><i class="fas fa-exclamation-triangle"></i>  Por favor rellenar los campos requeridos.</div>
         </div>
         </div>
     </div>

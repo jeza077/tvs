@@ -18,7 +18,7 @@ class Connection{
 		try{
 
 			$link = new PDO(
-				"mysql:host=localhost;dbname=".Connection::infoDB()['database'],
+				"mysql:host=localhost:3308;dbname=".Connection::infoDB()['database'],
 				Connection::infoDB()['user'],
 				Connection::infoDB()['pass']
 			);

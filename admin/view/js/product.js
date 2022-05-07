@@ -258,6 +258,38 @@ myDropzone.on('removedfile', file => {
 })
 
 
+
+
+/** VALIDAR CAMPOS VACIOS EN NUEVO PRODUCTO **/
+$('.multisteps-form__progress-btn, #nextProduct').click(function () {
+    if($('input:text[name=nameProduct]').val().length == 0 || $('#descriptionProduct').val().length == 0 || $('#choices-tags').val().length == 0) { 
+
+        document.getElementById('messageErrorNewProduct').classList.add('formulario__mensaje-error-activo');
+        setTimeout(() => {
+            document.getElementById('messageErrorNewProduct').classList.remove('formulario__mensaje-error-activo');
+        }, 5000);
+      
+      return false;
+      
+    } 
+});
+$('.multisteps-form__progress-btn, #nextImg').click(function () {
+    if(arrayImages.length == 0) { 
+
+
+        document.getElementById('messageErrorNewProduct').classList.add('formulario__mensaje-error-activo');
+        setTimeout(() => {
+            document.getElementById('messageErrorNewProduct').classList.remove('formulario__mensaje-error-activo');
+        }, 5000);
+      
+      return false;
+      
+    }
+});
+
+
+
+
 /**** Guardar un nuevo producto ****/
 const productForm = document.querySelector('form#productForm')
 if(productForm){
@@ -265,24 +297,17 @@ if(productForm){
         e.preventDefault();
         // console.log(arrayImages)
         // return;
-        // let $select = $('#choices-tags');
-        // $select.on('change', () => {
-        // let selecteds = [];
 
-        // Buscamos los option seleccionados
-        // $select.children(':selected').each((idx, el) => {
-        //     // Obtenemos los atributos que necesitamos
-        //     selecteds.push({
-        //     // id: el.id,
-        //     value: el.value
-        //     });
-        //     console.log(el)
-        // });
-        
-        //
-        // console.log(selecteds);
-    // });
-    // console.log($select.children(':selected'));
+        if($('input:text[name=priceProduct]').val().length == 0 || $('input:text[name=skuProduct]').val().length == 0) { 
+    
+            document.getElementById('messageErrorNewProduct').classList.add('formulario__mensaje-error-activo');
+            setTimeout(() => {
+                document.getElementById('messageErrorNewProduct').classList.remove('formulario__mensaje-error-activo');
+            }, 5000);
+            
+          return false;
+            
+        } 
 
         const idColors = [...$("#choices-tags :selected")].map(e => e.value);
 

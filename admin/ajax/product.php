@@ -9,6 +9,7 @@ class AjaxProduct{
 
     public $nameProduct;
     public $descriptionProduct;
+    public $skuProduct;
     public $priceProduct;
     public $categoryProduct;    
     public $idColors;    
@@ -39,13 +40,11 @@ class AjaxProduct{
         $data = array(
             'nameProduct' => $this->nameProduct,
             'descriptionProduct' => $this->descriptionProduct,
+            'skuProduct' => $this->skuProduct,
             'priceProduct' => $this->priceProduct,
             'categoryProduct' => $this->categoryProduct,
-            'idColors' => $this->idColors,
-            // 'arrayImgs' => $this->arrayImgs
+            'idColors' => $this->idColors
         );
-        
-        // $img = $this->arrayImgs;
 
         $response = ProductController::ctrSaveProduct($table, $data);
 
@@ -111,6 +110,7 @@ if(isset($_POST["nameProduct"])){
     $products = new AjaxProduct();
     $products->nameProduct = $_POST["nameProduct"];
     $products->descriptionProduct = $_POST["descriptionProduct"];
+    $products->skuProduct = $_POST["skuProduct"];
     $products->priceProduct = $_POST["priceProduct"];
     $products->categoryProduct = $_POST["categoryProduct"];
     $products->idColors = $_POST["idColor"];
