@@ -20,37 +20,6 @@
 //     })
 // }
 
-// $('#dataProduct').validate({
-    
-//     rules: {
-//         nameProduct: {
-//             required: true,
-//             minLength: 2,
-//         },
-//         category: {
-//             required: true,
-//         },
-//         description: {
-//             required: true,
-//             minLength: 4
-//         }
-//     },
-
-//     messages: {
-//         nameProduct: {
-//             required: 'Necesario',
-//             minLength: '2 o mas'
-//         },
-//         category: {
-//             required: 'Necesaria cat'
-//         },
-//         description: {
-//             required: 'Necesaria description',
-//             minLength: '4 o mas'
-//         }
-//     }
-
-// })
 
 dataTableAjax('#tableProducts', 'ajax/datatables/datatable.product.php');
 // $.ajax({

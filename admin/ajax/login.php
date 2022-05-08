@@ -1,17 +1,6 @@
 <?php
-    // header('Content-Type: application/json');
     include_once('../controllers/userController.php');
     include_once('../models/userModel.php');
-
-    // switch($_SERVER['REQUEST_METHOD']){
-    //     case 'PUT':
-
-    //         echo json_encode($_POST);
-
-        
-
-    //     break;
-    // }
 
     class AjaxLogin{
 

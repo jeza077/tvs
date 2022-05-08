@@ -10,7 +10,21 @@ $(function() {
         // console.log(emailLS)
     }
 
+    // Validad formato de correo sea el correcto
+    const emailValue = document.getElementById('emailLogin');
+    emailValue.addEventListener('keyup', e => {
+        e.preventDefault();
 
+        // console.log(e.target.value);
+        if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(e.target.value)){
+            
+            emailValue.classList.remove('invalid');
+
+        } else {
+            
+            emailValue.classList.add('invalid');
+        }
+    });
 
     // Login
     $('#login-form').submit(function(e) {
@@ -21,56 +35,66 @@ $(function() {
             password: $('#passwordLogin').val()
         }
 
-        // Guardar el usuario en Localstorage
-        const emailLocalStorage = localStorage.getItem('email'); 
-        if( $('#rememberMe').prop('checked') && !emailLocalStorage ){
-
-            localStorage.setItem('email',  data.email);
-            // console.log('Si check');
-
-        } else if( $('#rememberMe').prop('checked') && emailLocalStorage !== '' && emailLocalStorage !== data.email ) {
-    
-            localStorage.removeItem('email');
-            localStorage.setItem('email',  data.email);
-
+        // Validar correo y contraseña no vengan vacios
+        if(data.email.length === 0 || data.password.length === 0){
+            document.querySelector('#alertLogin').classList.add('formulario__mensaje-error-activo');
+            setTimeout(() => {
+                document.querySelector('#alertLogin').classList.remove('formulario__mensaje-error-activo');
+            }, 5000)
         } else {
 
-            localStorage.removeItem('email');
-            localStorage.setItem('email',  data.email);
+            // Guardar el usuario en Localstorage
+            const emailLocalStorage = localStorage.getItem('email'); 
+            if( $('#rememberMe').prop('checked') && !emailLocalStorage ){
 
-        }
+                localStorage.setItem('email',  data.email);
+                // console.log('Si check');
+
+            } else if( $('#rememberMe').prop('checked') && emailLocalStorage !== '' && emailLocalStorage !== data.email ) {
         
-
-        $.post('ajax/login.php', data, function(response) {
-            // console.log(JSON.parse(response));
-            // console.log(response);
-            // return;
-            const resp = JSON.parse(response);
-            if(resp.msg === 'logueado'){
-
-                // console.log('Logueado!');
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Bienvenido!',
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location = 'dashboard';
-                    }
-                })
+                localStorage.removeItem('email');
+                localStorage.setItem('email',  data.email);
 
             } else {
 
-                $('#remember').after('<div class="alert alert-danger text-white" id="alertError" role="alert">'+
-                 '<strong>¡Error!</strong> Correo o contraseña incorrectos, intente nuevamente. </div>');
+                localStorage.removeItem('email');
+                localStorage.setItem('email',  data.email);
 
-                setTimeout(() => {
-                    $('#alertError').fadeOut(400, function() { $(this).remove(); });
-                }, 5000);
-                // console.log('Email o contraseña incorrectas, intente nuevamente!');
             }
+            
 
-        })
+            $.post('ajax/login.php', data, function(response) {
+                // console.log(JSON.parse(response));
+                // console.log(response);
+                // return;
+                const resp = JSON.parse(response);
+                if(resp.msg === 'logueado'){
+
+                    // console.log('Logueado!');
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Bienvenido!',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location = 'dashboard';
+                        }
+                    })
+
+                } else {
+
+                    $('#remember').after('<div class="alert alert-danger text-white" id="alertError" role="alert">'+
+                    '<strong>¡Error!</strong> Correo o contraseña incorrectos, intente nuevamente. </div>');
+
+                    setTimeout(() => {
+                        $('#alertError').fadeOut(400, function() { $(this).remove(); });
+                    }, 5000);
+                    // console.log('Email o contraseña incorrectas, intente nuevamente!');
+                }
+
+            });
+        }
+
 
     });
 

@@ -17,25 +17,28 @@
                             <form role="form" class="text-start" id="login-form">
                                 <div class="input-group input-group-static mb-4">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" id="emailLogin" placeholder="tu@email.com">
+                                    <input type="email" class="form-control" id="emailLogin" placeholder="tu@email.com" required>
                                 </div>
                                 <div class="input-group input-group-static mb-4">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" id="passwordLogin" placeholder="•••••••••••••">
+                                    <input type="password" class="form-control" id="passwordLogin" placeholder="•••••••••••••" required>
                                 </div>
                                 <div class="form-check form-switch d-flex align-items-center mb-3" id="remember">
                                     <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                                    <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>  
+                                    <label class="form-check-label mb-0 ms-3" for="rememberMe">Recuerdame</label>  
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-dark w-100 mt-3 mb-0">Sign in</button>
+                                    <button type="submit" class="btn bg-gradient-dark w-100 mt-3 mb-0">Entrar</button>
                                 </div>
                             </form>
+                            <div class="alert alert-danger text-white mt-4" id="alertLogin"><i class="fas fa-exclamation-triangle"></i>  Favor rellenar todos los campos.</div>
                         </div>
+
+
                         <div class="card-footer text-center pt-0 px-lg-2 px-1">
                             <p class="mb-4 text-sm mx-auto">
-                            Don't have an account?
-                            <a href="javascript:;" class="text-info text-gradient font-weight-bold">Sign up</a>
+                            ¿Aún no tienes una cuenta?
+                            <a href="javascript:;" class="text-info text-gradient font-weight-bold">Registrarse</a>
                             </p>
                         </div>
                     </div>

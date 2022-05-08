@@ -6,7 +6,7 @@
     color: green;
 }
 
-.invalid {
+.invalid, .invalid:focus {
     color: red;
 }
 
@@ -54,4 +54,15 @@
 	width: 20px!important;
     height: 20px!important;
     margin: 3px 0 0 70px!important;
+}
+
+/* Estilo validaciones en Login */
+.form-control.invalid#emailLogin:focus{
+    background-image: linear-gradient(0deg,#bb2929 2px,rgba(156,39,176,0) 0),linear-gradient(0deg,#d2d2d2 1px,hsla(0,0%,82%,0) 0);
+}
+#alertLogin{
+	display: none;
+}
+#alertLogin.formulario__mensaje-error-activo{
+	display: block;
 }
