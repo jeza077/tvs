@@ -12,19 +12,23 @@ $(function() {
 
     // Validad formato de correo sea el correcto
     const emailValue = document.getElementById('emailLogin');
-    emailValue.addEventListener('keyup', e => {
-        e.preventDefault();
+    if(emailValue){
 
-        // console.log(e.target.value);
-        if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(e.target.value)){
-            
-            emailValue.classList.remove('invalid');
+        emailValue.addEventListener('keyup', e => {
+            e.preventDefault();
 
-        } else {
-            
-            emailValue.classList.add('invalid');
-        }
-    });
+            // console.log(e.target.value);
+            if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(e.target.value)){
+                
+                emailValue.classList.remove('invalid');
+
+            } else {
+                
+                emailValue.classList.add('invalid');
+            }
+        });
+    }
+    
 
     // Login
     $('#login-form').submit(function(e) {
