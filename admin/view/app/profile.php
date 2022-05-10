@@ -48,7 +48,7 @@
                                     <div class="col-12 col-sm-6" id="containerPasswordProfile">
                                         <div class="input-group input-group-dynamic form_group" id="group_password">
                                             <label class="form-label formulario__label">Contraseña</label>
-                                            <input class="form-control nueva-password formulario__input" type="password" id="profilePassword" name="profilePassword" readonly disabled>
+                                            <input class="form-control nueva-password formulario__input" type="password" id="profilePassword" name="profilePassword" placeholder="Contraseña" readonly disabled>
                                         </div>
                                         <p class="formulario__input-error-password mt-1">La contraseña debe contener de 8 16 caracteres.</p>
                                     </div>
@@ -67,9 +67,12 @@
                         </div>
                     </div>
                     <div class="col-sm-5" id="profile">
-                        <div class="card">
+                        <div class="card text-center">
                         <div class="card-body">
                             <!-- <h3 class="card-title">Mi cuenta</h3> -->
+                            <img src="assets/img/team-3.jpg" class="avatar" style="width: 150px; height: 150px">
+                            <h5 class="card-title mt-2">Nombre usuario</h5>
+                            <p class="card-text mt-1"><?php echo $response['nivel'] ?></p>
                             
                         </div>
                         </div>
