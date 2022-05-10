@@ -76,7 +76,12 @@ class ColorController {
 
         if(isset($id)){
 
-            $response = ColorModel::mdlDeleteColor($table, $id);
+            $data = array(
+                'id' => $id,
+                'status' => 0
+            );
+
+            $response = ColorModel::mdlDeleteColor($table, $data);
 
             if($response === true){
 

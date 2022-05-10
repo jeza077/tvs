@@ -41,20 +41,42 @@ class UserModel {
 
     static public function mdlUpdateGlobal($table, $item1, $valor1, $item2, $valor2, $item3, $valor3){
 
-        $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1, $item2 = :$item2 WHERE $item3 = :$item3");
+        if($item3 != null){
+
+            $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1, $item2 = :$item2 WHERE $item3 = :$item3");
+            
+            $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+            $stmt->bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+            $stmt->bindParam(":".$item3, $valor3, PDO::PARAM_INT);
+            if($stmt->execute()){
+    
+                return true;	
+    
+            }else{
+    
+                return $stmt -> errorInfo();
+            
+            }
         
-        $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-        $stmt->bindParam(":".$item2, $valor2, PDO::PARAM_STR);
-        $stmt->bindParam(":".$item3, $valor3, PDO::PARAM_INT);
-        if($stmt->execute()){
+        } else {
 
-            return true;	
+            $stmt = Connection::connect()->prepare("UPDATE $table SET $item1 = :$item1 WHERE $item2 = :$item2");
+            
+            $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+            $stmt->bindParam(":".$item2, $valor2, PDO::PARAM_STR);
 
-        }else{
-
-            return $stmt -> errorInfo();
-        
+            if($stmt->execute()){
+    
+                return true;	
+    
+            }else{
+    
+                return $stmt -> errorInfo();
+            
+            }
+            
         }
+
 
     }
 
