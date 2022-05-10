@@ -10,7 +10,7 @@ class ProductModel {
 
             $stmt = Connection::connect()->prepare("SELECT p.*, c.* FROM $table AS p"
             . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
-            . " WHERE $item = :$item AND estado = 1");
+            . " WHERE $item = :$item AND p.estado = 1");
 
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
             $stmt -> execute();
@@ -24,7 +24,7 @@ class ProductModel {
 
             $stmt = Connection::connect()->prepare("SELECT p.*, c.* FROM $table AS p"
             . " LEFT JOIN categorias AS c ON p.id_categoria = c.id_categoria"
-            . " WHERE estado = 1");
+            . " WHERE p.estado = 1");
             
             $stmt -> execute();
             return $stmt -> fetchAll();
