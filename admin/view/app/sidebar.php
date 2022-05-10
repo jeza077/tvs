@@ -50,7 +50,7 @@
   
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#category" class="nav-link text-dark menu-lateral" aria-controls="category" role="button" aria-expanded="false">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">category</i>
             <span class="nav-link-text ms-2 ps-1">Categorias</span>
           </a>
           <div class="collapse " id="category">
@@ -73,7 +73,7 @@
 
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#client" class="nav-link text-dark menu-lateral" aria-controls="client" role="button" aria-expanded="false">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">group</i>
             <span class="nav-link-text ms-2 ps-1">Clientes</span>
           </a>
           <div class="collapse " id="client">
@@ -90,7 +90,7 @@
 
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#product" class="nav-link text-dark menu-lateral" aria-controls="product" role="button" aria-expanded="false">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">shopping_basket</i>
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">inventory_2</i>
             <span class="nav-link-text ms-2 ps-1">Productos</span>
           </a>
           <div class="collapse " id="product">
@@ -113,7 +113,7 @@
 
         <li class="nav-item">
           <a data-bs-toggle="collapse" href="#color" class="nav-link text-dark menu-lateral" aria-controls="color" role="button" aria-expanded="false">
-            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">apps</i>
+            <i class="material-icons-round {% if page.brand == 'RTL' %}ms-2{% else %} me-2{% endif %}">palette</i>
             <span class="nav-link-text ms-2 ps-1">Colores</span>
           </a>
           <div class="collapse " id="color">
