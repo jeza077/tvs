@@ -20,7 +20,7 @@ class CategoryModel {
 
         } else {
 
-            $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE estado = 1");
             
             $stmt -> execute();
             return $stmt -> fetchAll();
@@ -67,11 +67,15 @@ class CategoryModel {
 		$stmt = null;
     }
 
-    static public function mdlDeleteCategory($table, $id){
+    static public function mdlDeleteCategory($table, $data){
 
-		$stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_categoria = :id_categoria");
+		// $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id_categoria = :id_categoria");
+        // $stmt -> bindParam(":id_categoria", $id, PDO::PARAM_INT);
 
-		$stmt -> bindParam(":id_categoria", $id, PDO::PARAM_INT);
+        $stmt = Connection::connect()->prepare("UPDATE $table SET estado = :estado WHERE id_categoria = :id_categoria");
+
+        $stmt -> bindParam(":estado", $data['status'], PDO::PARAM_INT);
+        $stmt -> bindParam(":id_categoria", $data['id'], PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 			return true;

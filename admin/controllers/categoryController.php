@@ -58,7 +58,12 @@ class CategoryController {
 
         if(isset($id)){
 
-            $response = CategoryModel::mdlDeleteCategory($table, $id);
+            $data = array(
+                'id' => $id,
+                'status' => 0
+            );
+
+            $response = CategoryModel::mdlDeleteCategory($table, $data);
 
             if($response === true){
 
